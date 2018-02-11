@@ -7,6 +7,13 @@
 	
 	class Admin extends Authenticatable
 	{
+		
+		/**
+		 * The application guard
+		*/
+		
+		protected $guard = 'admin';
+		
 		use Notifiable;
 		
 		/**
