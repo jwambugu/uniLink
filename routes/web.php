@@ -18,3 +18,25 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * Here we have all the admins routes
+ * @prefix admin
+*/
+Route::prefix('admin')->group(function (){
+	//Admin login
+	Route::get('/login', [
+		'uses' => 'PageController@getLogin',
+		'as' => 'admin.login'
+	]);
+	
+	Route::post('/login', [
+		'uses' => 'PageController@postLogin',
+		'as' => 'admin.login'
+	]);
+	// Admin dashboard
+	Route::get('/home', [
+		'uses' => 'AdminController@index',
+		'as' => 'admin.home'
+	]);
+});
