@@ -21,6 +21,7 @@ class CreateHostelsTable extends Migration
             $table->integer('latitude');
             $table->integer('longitude');
             $table->double('price')->default(0);
+            $table->string('contact');
             $table->double('deposit')->default(0);
             $table->string('account');
             $table->integer('bookedUnits');
