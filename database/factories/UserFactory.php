@@ -21,6 +21,8 @@
 			'remember_token' => str_random(10),
 		];
 	});
+	
+	//Hostel
 	$factory->define(App\Hostel::class, function (Faker $faker) {
 		return [
 			'name' => $faker->company,
@@ -33,5 +35,16 @@
 			'deposit' => $faker->numberBetween(2000, 8000),
 			'account' => $faker->creditCardNumber,
 			'bookedUnits' => $faker->numberBetween(1, 10),
+		];
+	});
+	
+	//Admin
+	$factory->define(App\Admin::class, function (Faker $faker) {
+		$password = '123456';
+		
+		return [
+			'username' => 'Artisan',
+			'email' => $faker->email,
+			'password' => bcrypt($password)
 		];
 	});
