@@ -3,7 +3,8 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AdminLTE 2 | Blank Page</title>
+	<title>{{ config('app.name', 'UniLink') }}::Admin</title>
+	
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
@@ -200,7 +201,7 @@
 			<ul class="sidebar-menu" data-widget="tree">
 				<li class="header">MAIN NAVIGATION</li>
 				<li class="active treeview menu-open">
-					<a href="#">
+					<a href="{{ route('admin.home') }}">
 						<i class="fa fa-dashboard"></i> <span>Dashboard</span>
 					</a>
 				</li>
@@ -274,5 +275,6 @@
 		$('.sidebar-menu').tree()
 	})
 </script>
+@yield('scripts')
 </body>
 </html>
