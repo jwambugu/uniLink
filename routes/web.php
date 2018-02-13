@@ -39,4 +39,10 @@ Route::prefix('admin')->group(function (){
 		'uses' => 'AdminController@index',
 		'as' => 'admin.home'
 	]);
+	
+	// Logout the Admin
+	Route::get('/logout', [
+		'uses' => 'AdminController@logout',
+		'as' => 'admin.logout'
+	]);
 });

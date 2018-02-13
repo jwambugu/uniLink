@@ -157,7 +157,7 @@
 										<a href="#" class="btn btn-default btn-flat">Profile</a>
 									</div>
 									<div class="col-xs-6 text-center">
-										<a href="#" class="btn btn-default btn-flat">Sign out</a>
+										<a href="{{ route('admin.logout') }}" class="btn btn-default btn-flat">Sign out</a>
 									</div>
 								</div>
 								<!-- /.row -->

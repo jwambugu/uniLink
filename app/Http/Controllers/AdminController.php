@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class AdminController extends Controller
 {
@@ -22,5 +24,16 @@ class AdminController extends Controller
 	 */
 	public function index(){
 		return view('admin.home');
+	}
+	
+	/**
+	 * Logout the admin, redirect to login page
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function logout(){
+		auth()->logout();
+		Session::flush();
+		
+		return redirect()->route('admin.login');
 	}
 }
