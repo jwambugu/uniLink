@@ -24,7 +24,7 @@ class CreateHostelsTable extends Migration
             $table->string('contact');
             $table->double('deposit')->default(0);
             $table->string('account');
-            $table->integer('bookedUnits');
+            $table->integer('bookedUnits')->default(0);
             $table->timestamps();
         });
     }

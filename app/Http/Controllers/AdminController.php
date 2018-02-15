@@ -36,4 +36,20 @@ class AdminController extends Controller
 		
 		return redirect()->route('admin.login');
 	}
+	
+	/**
+	 * Show the page for adding new hostels
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function getAdd(){
+		return view('admin.add');
+	}
+	
+	/**
+	 * Add an ew hostel to the database
+	 * @param Request $request
+	 */
+	public function addHostel(Request $request){
+		return $request;
+	}
 }

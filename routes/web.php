@@ -45,4 +45,16 @@ Route::prefix('admin')->group(function (){
 		'uses' => 'AdminController@logout',
 		'as' => 'admin.logout'
 	]);
+	
+	// Add an new hostel
+	Route::get('/add', [
+		'uses' => 'AdminController@getAdd',
+		'as' => 'admin.add'
+	]);
+	
+	// Add an new hostel to db
+	Route::post('/add', [
+		'uses' => 'AdminController@addHostel',
+		'as' => 'admin.add'
+	]);
 });
