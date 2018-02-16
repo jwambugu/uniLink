@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-
+use Alert;
+use App\Hostel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -46,10 +47,43 @@ class AdminController extends Controller
 	}
 	
 	/**
-	 * Add an ew hostel to the database
+	 * Add a new hostel to the database
 	 * @param Request $request
 	 */
 	public function addHostel(Request $request){
-		return $request;
+		// Validate the request
+		$this->validate($request, [
+			'name' => 'required',
+			'description' => 'required',
+			'totalRooms' => 'required|numeric',
+			'latitude' => 'required|numeric',
+			'longitude' => 'required|numeric',
+			'price' => 'required|numeric',
+			'contact' => 'required|numeric',
+			'deposit' => 'required|numeric',
+			'account' => 'required|numeric',
+			'bookedUnits' => 'required|numeric',
+		]);
+		
+		// Create a new hostel
+		$newHostel = new Hostel([
+			'name' => $request['name'],
+			'description' => $request['description'],
+			'totalRooms' => $request['totalRooms'],
+			'latitude' => $request['latitude'],
+			'longitude' => $request['longitude'],
+			'price' => $request['price'],
+			'contact' => $request['contact'],
+			'deposit' => $request['deposit'],
+			'account' => $request['account'],
+			'bookedUnits' => $request['bookedUnits'],
+		]);
+		
+		// Save the data to the db
+		$newHostel->save();
+		
+		alert()->success('Hostel Successfully Added. Redirecting you to add the hostel rooms data.', 'Successfully Added')->persistent();
+		
+		return redirect()->back();
 	}
 }
