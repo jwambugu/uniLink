@@ -9,11 +9,8 @@
         "barryvdh/laravel-cors": "^0.11.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/passport": "^4.0",
         "laravel/tinker": "~1.0",
         "php-console/php-console": "^3.1",
-        "pusher/pusher-http-laravel": "^4.0",
-        "stripe/stripe-php": "^5.9",
         "uxweb/sweet-alert": "^1.4"
     },
     "require-dev": {
