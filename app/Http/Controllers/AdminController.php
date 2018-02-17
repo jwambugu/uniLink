@@ -49,6 +49,7 @@ class AdminController extends Controller
 	/**
 	 * Add a new hostel to the database
 	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function addHostel(Request $request){
 		// Validate the request
