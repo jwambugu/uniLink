@@ -71,6 +71,7 @@ class AdminController extends Controller
 		// Create a new hostel
 		$newHostel = new Hostel([
 			'name' => $request['name'],
+			'ownerID' => $request['ownerID'],
 			'description' => $request['description'],
 			'totalRooms' => $request['totalRooms'],
 			'latitude' => $request['latitude'],

@@ -12,7 +12,7 @@ class Hostel extends Model
 	 * @var array
 	 */
     protected $fillable = [
-    	'name', 'description', 'totalRooms', 'latitude', 'longitude', 'price', 'contact', 'deposit', 'account', 'bookedUnits'
+    	'ownerID', 'name', 'description', 'totalRooms', 'latitude', 'longitude', 'price', 'contact', 'deposit', 'account', 'bookedUnits'
     ];
     
     /**

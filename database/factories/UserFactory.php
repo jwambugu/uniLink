@@ -26,6 +26,7 @@
 	$factory->define(App\Hostel::class, function (Faker $faker) {
 		return [
 			'name' => $faker->company,
+			'ownerID' => "UN/".$faker->numberBetween(1, 50)."/18",
 			'description' => $faker->text,
 			'totalRooms' => $faker->numberBetween(1, 50),
 			'latitude' => $faker->latitude,

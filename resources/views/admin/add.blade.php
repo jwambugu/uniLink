@@ -26,6 +26,15 @@
                                     </span>
 										@endif
 									</div>
+									<div class="form-group" {{ $errors->has('name') ? 'has-error': '' }}>
+										<label for="ownerID">Hostel Owner ID</label>
+										<input type="text" class="form-control" id="ownerID" name="ownerID" placeholder="Enter the hostel owner ID.." value="{{ old('ownerID') }}" required>
+										@if ($errors->has('ownerID'))
+											<span class="help-block text-red">
+                                        <strong>{{ $errors->first('ownerID') }}</strong>
+                                    </span>
+										@endif
+									</div>
 									<div class="form-group" {{ $errors->has('description') ? 'has-error' : '' }}>
 										<label for="description">Hostel Description</label>
 										<textarea name="description" id="description" cols="30" rows="2" class="form-control" required>{{ old('description') }}</textarea>
@@ -53,6 +62,8 @@
                                     </span>
 										@endif
 									</div>
+								</div>
+								<div class="col-sm-6">
 									<div class="form-group" {{ $errors->has('longitude') ? 'has-error': '' }}>
 										<label for="longitude" >Longitude</label>
 										<input type="text" class="form-control" id="longitude" name="longitude" placeholder="Hostel's longitude from Google maps..." value="{{ old('longitude') }}" required>
@@ -62,8 +73,6 @@
                                     </span>
 										@endif
 									</div>
-								</div>
-								<div class="col-sm-6">
 									<div class="form-group" {{ $errors->has('price') ? 'has-error': '' }}>
 										<label for="price">Hostel Rent</label>
 										<input type="text" class="form-control" id="price" name="price" placeholder="Enter rent..." value="{{ old('price') }}" required>
