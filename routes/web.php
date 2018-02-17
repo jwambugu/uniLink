@@ -35,7 +35,7 @@ Route::prefix('admin')->group(function (){
 		'as' => 'admin.login'
 	]);
 	// Admin dashboard
-	Route::get('/home', [
+	Route::get('/', [
 		'uses' => 'AdminController@index',
 		'as' => 'admin.home'
 	]);
@@ -46,7 +46,7 @@ Route::prefix('admin')->group(function (){
 		'as' => 'admin.logout'
 	]);
 	
-	// Add an new hostel
+	// Return the hostel add view
 	Route::get('/add', [
 		'uses' => 'AdminController@getAdd',
 		'as' => 'admin.add'
@@ -56,5 +56,17 @@ Route::prefix('admin')->group(function (){
 	Route::post('/add', [
 		'uses' => 'AdminController@addHostel',
 		'as' => 'admin.add'
+	]);
+	
+	// Route to add hostel images and rooms data
+	Route::get('/hostel-data', [
+		'uses' => 'AdminController@getHostelData',
+		'as' => 'admin.hostelData'
+	]);
+	
+	// Route to add hostel images and rooms data
+	Route::post('/hostel-data', [
+		'uses' => 'AdminController@postHostelData',
+		'as' => 'admin.hostelData'
 	]);
 });
