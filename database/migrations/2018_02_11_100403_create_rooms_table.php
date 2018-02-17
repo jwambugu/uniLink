@@ -15,6 +15,8 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
+	        $table->integer('hostel_id')->unsigned();
+	        $table->foreign('hostel_id')->references('id')->on('hostels');
             $table->string('roomType');
             $table->string('roomCategory');
             $table->string('electricityBill');

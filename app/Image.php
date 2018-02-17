@@ -12,6 +12,13 @@ class Image extends Model
 	 * @var array
 	 */
 	protected $fillable = [
-		'image_1', 'image_2', 'image_3', 'image_4'
+		'image'
 	];
+	
+	/**
+	 * Here we have the images relationship with a hostel
+	*/
+	public function hostelImage(){
+		$this->belongsTo('App\Hostel');
+	}
 }

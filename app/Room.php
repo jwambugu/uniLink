@@ -14,4 +14,11 @@ class Room extends Model
 	protected $fillable = [
 		'roomType', 'roomCategory', 'electricityBill', 'waterBill'
 	];
+	
+	/**
+	 * Here we have the rooms relationship with a hostel
+	 */
+	public function hostelRooms(){
+		$this->belongsTo('App\Hostel');
+	}
 }
