@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Alert;
 use App\Hostel;
+use App\Image;
+use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -83,8 +85,85 @@ class AdminController extends Controller
 		// Save the data to the db
 		$newHostel->save();
 		
+		$hostelID = $newHostel->id;
+		
+		
 		alert()->success('Hostel Successfully Added. Redirecting you to add the hostel rooms data.', 'Successfully Added')->persistent();
 		
-		return redirect()->back();
+		return redirect()->route('admin.hostelData')->with('hostelID', $hostelID);
+	}
+	
+	/**
+	 * Show the view for adding hostel rooms
+	 * and images
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function getHostelData(){
+		$hostelID = Session::get('hostelID');
+		return view('admin.room')->with('hostelID', $hostelID);
+	}
+	
+	/**
+	 * Add the hostels rooms data and images to db
+	 * Upload the images
+	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function postHostelData(Request $request){
+		//return $request;
+		// Validate the request
+		$this->validate($request, [
+			'roomType' => 'required',
+			'roomCategory' => 'required',
+			'electricityBill' => 'required',
+			'waterBill' => 'required',
+			'images[]' => 'image|nullable|mimes:jpeg,bmp,png|max:2000'
+		]);
+		
+		// Extract the hostel_id
+		$hostelID = $request['hostelID'];
+		
+		// Handle the image upload
+		if($request->hasFile('images')){
+			foreach ($request->images as $image){
+				$fileNameWithExt = $image->getClientOriginalName();
+				$filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+				$extension = $image->getClientOriginalExtension();
+				
+				$fileNameToStore = $filename.'_'.time().'.'.$extension;
+				
+				$image->storeAs('public/hostel_images', $fileNameToStore);
+				
+			}
+		} else{
+			$fileNameToStore = 'no-image.jpg';
+		}
+		
+		//Insert into the rooms table
+		$newRoom = new Room([
+			'hostel_id' => $hostelID,
+			'roomType' => $request['roomType'],
+			'roomCategory' => $request['roomCategory'],
+			'electricityBill' => $request['electricityBill'],
+			'waterBill' => $request['waterBill'],
+		]);
+		
+		// Save to db
+		$newRoom->save();
+		
+		
+		// Insert into the images table
+		$newImage = new Image([
+			'hostel_id' => $hostelID,
+			'image' => $fileNameToStore
+		]);
+		
+		// Save to db
+		$newImage->save();
+		
+		alert()->success('Hostel data successfully recorded.', 'Data Inserted');
+		
+		return redirect()->route('admin.home');
+		
 	}
 }
