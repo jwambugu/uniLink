@@ -26,7 +26,18 @@ class AdminController extends Controller
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function index(){
-		return view('admin.home');
+		// All the dashboard data
+		$users = AnalysisController::getUsersCount();
+		$bookedUnits = AnalysisController::getBookedUnitsCount();
+		$totalRooms = AnalysisController::getTotalUnitsCount();
+		$hostels = AnalysisController::mostPopularHostels();
+		
+		return view('admin.home',[
+			'users' => $users,
+			'bookedUnits' => $bookedUnits,
+			'totalRooms' => $totalRooms,
+			'hostels' => $hostels
+		]);
 	}
 	
 	/**
@@ -101,6 +112,7 @@ class AdminController extends Controller
 	 */
 	public function getHostelData(){
 		$hostelID = Session::get('hostelID');
+		
 		return view('admin.room')->with('hostelID', $hostelID);
 	}
 	
@@ -165,6 +177,13 @@ class AdminController extends Controller
 		alert()->success('Hostel data successfully recorded.', 'Data Inserted');
 		
 		return redirect()->route('admin.home');
-		
+	}
+	
+	/**
+	 * Show the page for searching data to manage a hostel
+	 *
+	*/
+	public function getManage(){
+		return view('admin.manage');
 	}
 }
