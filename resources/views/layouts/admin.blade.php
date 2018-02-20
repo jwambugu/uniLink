@@ -215,7 +215,7 @@
 					</a>
 					<ul class="treeview-menu">
 						<li><a href="{{ route('admin.add') }}"><i class="fa fa-plus text-success"></i> Add Hostel</a></li>
-						<li><a href="#"><i class="fa fa-pencil text-yellow"></i> Manage Hostel</a></li>
+						<li><a href="{{ route('admin.manage') }}"><i class="fa fa-pencil text-yellow"></i> Manage Hostel</a></li>
 					</ul>
 				</li>
 				<li class="active treeview menu-open">
