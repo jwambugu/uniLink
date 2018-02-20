@@ -69,4 +69,10 @@ Route::prefix('admin')->group(function (){
 		'uses' => 'AdminController@postHostelData',
 		'as' => 'admin.hostelData'
 	]);
+	
+	// Manage hostel route - searches for a particular item
+	Route::get('/manage', [
+		'uses' => 'AdminController@getManage',
+		'as' => 'admin.manage'
+	]);
 });
