@@ -4,8 +4,8 @@
 	<!-- Content Header (Page header) -->
 	<section class="content-header">
 		<h1>
-			Dashboard
-			<small>Version 2.0</small>
+			UniLink
+			<small>Dashboard <i class="fa fa-smile-o"></i></small>
 		</h1>
 	</section>
 	
@@ -19,7 +19,7 @@
 					
 					<div class="info-box-content">
 						<span class="info-box-text">Total Units</span>
-						<span class="info-box-number">90<small>%</small></span>
+						<span class="info-box-number">{{ number_format($totalRooms) }}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -32,7 +32,7 @@
 					
 					<div class="info-box-content">
 						<span class="info-box-text">Booked Units</span>
-						<span class="info-box-number">41,410</span>
+						<span class="info-box-number">{{ number_format($bookedUnits) }}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -49,7 +49,7 @@
 					
 					<div class="info-box-content">
 						<span class="info-box-text">Remaining Units</span>
-						<span class="info-box-number">760</span>
+						<span class="info-box-number">{{ number_format($totalRooms - $bookedUnits) }}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -62,7 +62,7 @@
 					
 					<div class="info-box-content">
 						<span class="info-box-text">Total Users</span>
-						<span class="info-box-number">2,000</span>
+						<span class="info-box-number">{{ number_format($users) }}</span>
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -84,50 +84,25 @@
 					<!-- /.box-header -->
 					<div class="box-body">
 						<ul class="products-list product-list-in-box">
-							<li class="item">
-								<div class="product-img">
-									<img src="{{ asset('img/default-50x50.gif') }}" alt="Product Image">
-								</div>
-								<div class="product-info">
-									<a href="javascript:void(0)" class="product-title">Hostel #1
-										<span class="label label-warning pull-right">$1800</span></a>
-									<span class="product-description">Lorem ipsum dolor sit amet.</span>
-								</div>
-							</li>
-							<!-- /.item -->
-							<li class="item">
-								<div class="product-img">
-									<img src="{{ asset('img/default-50x50.gif') }}" alt="Product Image">
-								</div>
-								<div class="product-info">
-									<a href="javascript:void(0)" class="product-title">Hostel #1
-										<span class="label label-warning pull-right">$1800</span></a>
-									<span class="product-description">Lorem ipsum dolor sit amet.</span>
-								</div>
-							</li>
-							<!-- /.item -->
-							<li class="item">
-								<div class="product-img">
-									<img src="{{ asset('img/default-50x50.gif') }}" alt="Product Image">
-								</div>
-								<div class="product-info">
-									<a href="javascript:void(0)" class="product-title">Hostel #1
-										<span class="label label-warning pull-right">$1800</span></a>
-									<span class="product-description">Lorem ipsum dolor sit amet.</span>
-								</div>
-							</li>
-							<!-- /.item -->
-							<li class="item">
-								<div class="product-img">
-									<img src="{{ asset('img/default-50x50.gif') }}" alt="Product Image">
-								</div>
-								<div class="product-info">
-									<a href="javascript:void(0)" class="product-title">Hostel #1
-										<span class="label label-warning pull-right">$1800</span></a>
-									<span class="product-description">Lorem ipsum dolor sit amet.</span>
-								</div>
-							</li>
-							<!-- /.item -->
+							@if(count($hostels) > 0)
+								@foreach($hostels as $hostel)
+									<li class="item">
+										<div class="product-img">
+											<img src="{{ asset('img/default-50x50.gif') }}" alt="Product Image">
+										</div>
+										<div class="product-info">
+											<a href="javascript:void(0)" class="product-title">{{ $hostel->name }}
+												<span class="label label-warning pull-right">KES {{ number_format($hostel->price) }}</span>
+												<span class="label label-primary pull-right">Rooms {{ number_format($hostel->totalRooms) }}</span>
+												<span class="label label-success pull-right">Booked {{ number_format($hostel->bookedUnits) }}</span>
+												<span class="label label-danger pull-right">Remaining {{ number_format($hostel->totalRooms - $hostel->bookedUnits) }}</span>						</a>
+											<span class="product-description">{{ $hostel->description }}</span>
+										</div>
+									</li>
+									<!-- /.item -->
+								@endforeach
+							@else
+							@endif
 						</ul>
 					</div>
 					<br><br>
