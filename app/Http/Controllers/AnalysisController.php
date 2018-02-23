@@ -45,9 +45,10 @@ class AnalysisController extends Controller
 		
 	}
 
-	/* Get the count of all total units
-	* @return int
-	*/
+    /**
+     *  Get the count of all total units
+     * @return int
+     */
 	public static function getTotalUnitsCount(){
 		$totalRooms = 0;
 		
@@ -70,4 +71,14 @@ class AnalysisController extends Controller
 		
 		return $hostels;
 	}
+
+    /**
+     * Fetch all hostels, sort by the most populat
+     * @return array
+     */
+	public static function manageHostels(){
+	    $hostels = Hostel::orderBy('bookedUnits', 'DESC')->paginate(10);
+
+	    return $hostels;
+    }
 }
