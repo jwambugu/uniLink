@@ -79,8 +79,8 @@ class AdminController extends Controller
 			'bookedUnits' => 'required|numeric',
 		]);
 		
-		// Create a new hostel
-		$newHostel = new Hostel([
+		// Create a new hostel and save to db
+		$newHostel = Hostel::create([
 			'name' => $request['name'],
 			'ownerID' => $request['ownerID'],
 			'description' => $request['description'],
@@ -93,14 +93,11 @@ class AdminController extends Controller
 			'account' => $request['account'],
 			'bookedUnits' => $request['bookedUnits'],
 		]);
-		
-		// Save the data to the db
-		$newHostel->save();
-		
+
 		$hostelID = $newHostel->id;
 		
 		
-		alert()->success('Hostel Successfully Added. Redirecting you to add the hostel rooms data.', 'Successfully Added')->persistent();
+		alert()->success('Hostel Successfully Added. Redirecting you to add the hostel rooms data.', 'Hostel Successfully Added')->persistent();
 		
 		return redirect()->route('admin.hostelData')->with('hostelID', $hostelID);
 	}
@@ -178,12 +175,16 @@ class AdminController extends Controller
 		
 		return redirect()->route('admin.home');
 	}
-	
-	/**
-	 * Show the page for searching data to manage a hostel
-	 *
-	*/
+
+    /**
+     * Show the page for searching data to manage a hostel
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
 	public function getManage(){
-		return view('admin.manage');
+	    $hostels = AnalysisController::manageHostels();
+
+		return view('admin.manage', [
+		    'hostels' => $hostels
+        ]);
 	}
 }
