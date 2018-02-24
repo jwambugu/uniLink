@@ -187,4 +187,14 @@ class AdminController extends Controller
 		    'hostels' => $hostels
         ]);
 	}
+
+	/**
+	 * Search a hostel from the db
+	 * @param Request $request
+	 */
+	public function postManage(Request $request){
+		$hostel = Hostel::where('ownerID', $request['ownerID'])->first();
+
+		return $hostel;
+	}
 }
