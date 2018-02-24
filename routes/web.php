@@ -75,4 +75,10 @@ Route::prefix('admin')->group(function (){
 		'uses' => 'AdminController@getManage',
 		'as' => 'admin.manage'
 	]);
+
+	// Post manage route
+	Route::post('/manage', [
+		'uses' => 'AdminController@postManage',
+		'as' => 'admin.manage'
+	]);
 });
