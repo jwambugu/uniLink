@@ -33,14 +33,9 @@ class AnalysisController extends Controller
 	 * @return int
 	 */
 	public static function getBookedUnitsCount(){
-		$bookedUnits = 0;
-		
-		$hostels = Hostel::all();
-		
-		foreach ($hostels as $hostel){
-			$bookedUnits += $hostel->bookedUnits;
-		}
-		
+
+		$bookedUnits = Hostel::all()->sum('bookedUnits');
+
 		return $bookedUnits;
 		
 	}
