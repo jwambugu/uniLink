@@ -50,14 +50,9 @@ class AnalysisController extends Controller
      * @return int
      */
 	public static function getTotalUnitsCount(){
-		$totalRooms = 0;
-		
-		$hostels = Hostel::all();
-		
-		foreach ($hostels as $hostel){
-			$totalRooms += $hostel->totalRooms;
-		}
-		
+
+		$totalRooms =  Hostel::all()->sum('totalRooms');
+
 		return $totalRooms;
 		
 	}
