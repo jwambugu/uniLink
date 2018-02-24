@@ -15,8 +15,9 @@
 					</center>
 					<div class="row">
 						<div class="col-md-3 col-md-offset-5">
-							<form action="" method="post">
+							<form action="{{ route('admin.manage') }}" method="post">
 								<input type="search" name="ownerID" id="ownerID" class="form-control" placeholder="Search by OwnerID">
+								{{ csrf_field() }}
 							</form>
 						</div>
 					</div>
