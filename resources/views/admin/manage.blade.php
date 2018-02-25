@@ -14,10 +14,13 @@
 						</div>
 					</center>
 					<div class="row">
-						<div class="col-md-3 col-md-offset-5">
+						<div class="col-md-6 col-md-offset-8">
 							<form action="{{ route('admin.manage') }}" method="post">
-								<input type="search" name="ownerID" id="ownerID" class="form-control" placeholder="Search by OwnerID">
+								<div class="form-group col-sm-6">
+									<input type="search" name="ownerID" id="ownerID" class="form-control" placeholder="Search by OwnerID">
+								</div>
 								{{ csrf_field() }}
+								<button type="submit" class="btn btn-primary">Search</button>
 							</form>
 						</div>
 					</div>
