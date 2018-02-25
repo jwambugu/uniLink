@@ -67,7 +67,7 @@ class AnalysisController extends Controller
      * @return array
      */
 	public static function manageHostels(){
-	    $hostels = Hostel::orderBy('bookedUnits', 'DESC')->paginate(10);
+	    $hostels = Hostel::orderBy('created_at', 'DESC')->paginate(10);
 
 	    return $hostels;
     }
