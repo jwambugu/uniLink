@@ -197,6 +197,12 @@ class AdminController extends Controller
 
 		$hostel = Hostel::where('ownerID', $request['ownerID'])->with('images', 'rooms')->first();
 
+		if(count($hostel) == 0){
+			alert()->error('Sorry the hostel data was not found. Kindly check the ID then try again.', 'Invalid Hostel ID')->persistent('Got It');
+
+			return redirect()->back();
+		}
+
 		return view('admin.hostelData',[
 			'hostel' => $hostel
 		]);
