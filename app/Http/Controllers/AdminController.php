@@ -127,50 +127,50 @@ class AdminController extends Controller
 			'roomCategory' => 'required',
 			'electricityBill' => 'required',
 			'waterBill' => 'required',
-			'images[]' => 'image|nullable|mimes:jpeg,bmp,png|max:2000'
+			'images[]' => 'image|nullable|mimes:jpeg,bmp,png'
 		]);
 		
 		// Extract the hostel_id
 		$hostelID = $request['hostelID'];
-		
+
 		// Handle the image upload
-		if($request->hasFile('images')){
-			foreach ($request->images as $image){
-				$fileNameWithExt = $image->getClientOriginalName();
-				$filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-				$extension = $image->getClientOriginalExtension();
-				
-				$fileNameToStore = $filename.'_'.time().'.'.$extension;
-				
-				$image->storeAs('public/hostel_images', $fileNameToStore);
-				
-			}
-		} else{
+		if(!$request->hasFile('images')){
 			$fileNameToStore = 'no-image.jpg';
+
+			// Insert into the images table
+			Image::create([
+				'hostel_id' => $hostelID,
+				'image' => $fileNameToStore
+			]);
 		}
-		
+
+		foreach ($request->images as $image){
+			$fileNameWithExt = $image->getClientOriginalName();
+			$filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+			$extension = $image->getClientOriginalExtension();
+
+			$fileNameToStore = $filename.'_'.time().'.'.$extension;
+
+			$image->storeAs('public/hostel_images', $fileNameToStore);
+
+			// Insert into the images table
+			Image::create([
+				'hostel_id' => $hostelID,
+				'image' => $fileNameToStore
+			]);
+
+
+		}
+
 		//Insert into the rooms table
-		$newRoom = new Room([
+		Room::create([
 			'hostel_id' => $hostelID,
 			'roomType' => $request['roomType'],
 			'roomCategory' => $request['roomCategory'],
 			'electricityBill' => $request['electricityBill'],
 			'waterBill' => $request['waterBill'],
 		]);
-		
-		// Save to db
-		$newRoom->save();
-		
-		
-		// Insert into the images table
-		$newImage = new Image([
-			'hostel_id' => $hostelID,
-			'image' => $fileNameToStore
-		]);
-		
-		// Save to db
-		$newImage->save();
-		
+
 		alert()->success('Hostel data successfully recorded.', 'Data Inserted');
 		
 		return redirect()->route('admin.home');
@@ -191,10 +191,15 @@ class AdminController extends Controller
 	/**
 	 * Search a hostel from the db
 	 * @param Request $request
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function postManage(Request $request){
-		$hostel = Hostel::where('ownerID', $request['ownerID'])->first();
 
-		return $hostel;
+		$hostel = Hostel::where('ownerID', $request['ownerID'])->with('images', 'rooms')->first();
+
+		return view('admin.hostelData',[
+			'hostel' => $hostel
+		]);
+
 	}
 }
