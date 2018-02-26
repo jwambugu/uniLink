@@ -50,7 +50,7 @@ $factory->define(App\Admin::class, function (Faker $faker) {
 	];
 });
 
-// Rooms
+// Rooms Seeder
 $factory->define(App\Room::class, function (Faker $faker) {
 
 return [
