@@ -12,6 +12,6 @@ class HostelTableSeeder extends Seeder
     public function run()
     {
         // Call the model factory
-	    factory(App\Hostel::class, 10)->create();
+	    factory(App\Hostel::class, 5)->create();
     }
 }
