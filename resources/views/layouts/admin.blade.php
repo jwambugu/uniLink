@@ -8,16 +8,16 @@
 	<!-- Tell the browser to be responsive to screen width -->
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.7 -->
-	<link rel="stylesheet" href="{{ asset('css/app.css') }}">
+	<link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
 	<!-- Font Awesome -->
-	<link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
+	<link rel="stylesheet" href="{{ secure_asset('css/font-awesome/css/font-awesome.min.css') }}">
 	<!-- Ionicons -->
-	<link rel="stylesheet" href="{{ asset('css/ionicons.min.css') }}">
+	<link rel="stylesheet" href="{{ secure_asset('css/ionicons.min.css') }}">
 	<!-- Theme style -->
-	<link rel="stylesheet" href="{{ asset('css/AdminLTE.css') }}">
+	<link rel="stylesheet" href="{{ secure_asset('css/AdminLTE.css') }}">
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
 		 folder instead of downloading all of them to reduce the load. -->
-	<link rel="stylesheet" href="{{ asset('css/_all-skins.css') }}">
+	<link rel="stylesheet" href="{{ secure_asset('css/_all-skins.css') }}">
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -67,7 +67,7 @@
 									<li><!-- start message -->
 										<a href="#">
 											<div class="pull-left">
-												<img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+												<img src="{{ secure_asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 											</div>
 											<h4>
 												Support Team
@@ -139,13 +139,13 @@
 					<!-- User Account: style can be found in dropdown.less -->
 					<li class="dropdown user user-menu">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+							<img src="{{ secure_asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
 							<span class="hidden-xs">{{ auth()->user()->username }}</span>
 						</a>
 						<ul class="dropdown-menu">
 							<!-- User image -->
 							<li class="user-header">
-								<img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+								<img src="{{ secure_asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 								
 								<p>
 									<strong>My Email -</strong> {{ auth()->user()->email }}
@@ -179,7 +179,7 @@
 			<!-- Sidebar user panel -->
 			<div class="user-panel">
 				<div class="pull-left image">
-					<img src="{{ asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
+					<img src="{{ secure_asset('img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
 				</div>
 				<div class="pull-left info">
 					<p>{{ auth()->user()->username }}</p>
@@ -260,15 +260,15 @@
 
 <!-- jQuery 3 -->
 <!-- Bootstrap 3.3.7 -->
-<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ secure_asset('js/app.js') }}"></script>
 <!-- SlimScroll -->
-<script src="{{ asset('js/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ secure_asset('js/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
-<script src="{{ asset('js/fastclick.js') }}"></script>
+<script src="{{ secure_asset('js/fastclick.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ asset('js/adminlte.min.js') }}"></script>
+<script src="{{ secure_asset('js/adminlte.min.js') }}"></script>
 
-<script src="{{ asset('js/sweetalert.js') }}"></script>
+<script src="{{ secure_asset('js/sweetalert.js') }}"></script>
 @include('sweet::alert')
 <script>
 	$(document).ready(function () {
