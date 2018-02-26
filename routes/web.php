@@ -81,4 +81,10 @@ Route::prefix('admin')->group(function (){
 		'uses' => 'AdminController@postManage',
 		'as' => 'admin.manage'
 	]);
+
+	// Route for viewing hostel data from the home page
+	Route::get('/view/{id}', [
+		'uses' => 'AdminController@viewHostel',
+		'as' => 'admin.view'
+	]);
 });

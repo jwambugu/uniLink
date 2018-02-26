@@ -91,7 +91,7 @@
 											<img src="{{ asset('img/default-50x50.gif') }}" alt="Product Image">
 										</div>
 										<div class="product-info">
-											<a href="{{ route('admin.manage') }}" class="product-title">{{ $hostel->name }}
+											<a href="admin/view/{{ $hostel->id }}" class="product-title">{{ $hostel->name }}
 												<span class="label label-warning pull-right">KES {{ number_format($hostel->price) }}</span>
 												<span class="label label-primary pull-right">Rooms {{ number_format($hostel->totalRooms) }}</span>
 												<span class="label label-success pull-right">Booked {{ number_format($hostel->bookedUnits) }}</span>

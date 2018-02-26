@@ -38,7 +38,9 @@
 							</tr>
 							@foreach($hostels as $hostel)
 								<tr>
-									<td>{{ $hostel->ownerID }}</td>
+									<td>
+										<a href="view/{{ $hostel->id }}">{{ $hostel->ownerID }}</a>
+									</td>
 									<td>{{ $hostel->name }}</td>
 									<td>
 										<span class="label label-primary">{{ $hostel->totalRooms }}</span>
