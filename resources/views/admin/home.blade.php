@@ -91,7 +91,7 @@
 											<img src="{{ asset('img/default-50x50.gif') }}" alt="Product Image">
 										</div>
 										<div class="product-info">
-											<a href="javascript:void(0)" class="product-title">{{ $hostel->name }}
+											<a href="{{ route('admin.manage') }}" class="product-title">{{ $hostel->name }}
 												<span class="label label-warning pull-right">KES {{ number_format($hostel->price) }}</span>
 												<span class="label label-primary pull-right">Rooms {{ number_format($hostel->totalRooms) }}</span>
 												<span class="label label-success pull-right">Booked {{ number_format($hostel->bookedUnits) }}</span>
@@ -100,17 +100,19 @@
 										</div>
 									</li>
 									<!-- /.item -->
+									<!-- /.box-body -->
+									<div class="box-footer text-center">
+										<a href="{{ route('admin.manage') }}" class="uppercase">View All Hostels</a>
+									</div>
+									<!-- /.box-footer -->
 								@endforeach
 							@else
+								<h2 class="text-center text-red">No Hostels Available</h2>
+								<a href="{{ route('admin.add') }}" class="btn btn-primary col-sm-offset-5">Add Hostel</a>
 							@endif
 						</ul>
 					</div>
 					<br><br>
-					<!-- /.box-body -->
-					<div class="box-footer text-center">
-						<a href="javascript:void(0)" class="uppercase">View All Products</a>
-					</div>
-					<!-- /.box-footer -->
 				</div>
 				<!-- /.box -->
 				<!-- /.row -->
