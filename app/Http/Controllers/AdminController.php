@@ -207,6 +207,19 @@ class AdminController extends Controller
 		return view('admin.hostelData',[
 			'hostel' => $hostel
 		]);
+	}
+
+	/**
+	 * View hostel data from the dashboard
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function viewHostel($id){
+		$hostel = Hostel::find($id)->with('images', 'rooms')->first();
+
+		return view('admin.hostelData',[
+			'hostel' => $hostel
+		]);
 
 	}
 }
