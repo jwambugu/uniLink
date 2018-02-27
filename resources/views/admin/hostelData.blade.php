@@ -18,6 +18,9 @@
 						<h5 class="widget-user-desc text-justify">
 							{{ $hostel->description }}
 						</h5>
+						<div class="col-sm-offset-11">
+							<a href="/admin/edit/{{ $hostel->id }}" class="btn btn-success btn-block">Edit Data</a>
+						</div>
 					</div>
 					<div class="box-footer no-padding">
 						<div class="row">
