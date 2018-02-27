@@ -220,6 +220,73 @@ class AdminController extends Controller
 		return view('admin.hostelData',[
 			'hostel' => $hostel
 		]);
+	}
 
+	/**
+	 * Edit a hostel data to be used in updating the records
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function editHostel($id){
+		$hostel = Hostel::find($id)->with('images', 'rooms')->first();
+
+		return view('admin.edit',[
+			'hostel' => $hostel
+		]);
+	}
+
+	/**
+	 * Update the hostel data
+	 * @param Request $request
+	 */
+	public function updateHostel(Request $request){
+		// Validate the request
+		$this->validate($request, [
+			'name' => 'required',
+			'description' => 'required',
+			'totalRooms' => 'required|numeric',
+			'latitude' => 'required|numeric',
+			'longitude' => 'required|numeric',
+			'price' => 'required|numeric',
+			'contact' => 'required|numeric',
+			'deposit' => 'required|numeric',
+			'account' => 'required|numeric',
+			'bookedUnits' => 'required|numeric',
+			'roomType' => 'required',
+			'roomCategory' => 'required',
+			'electricityBill' => 'required',
+			'waterBill' => 'required',
+		]);
+
+		// Find the hostel by ownerID
+		$hostel = Hostel::where('ownerID', $request['ownerID'])->with('images', 'rooms')->first();
+
+		// Update the hostels table data @param $hostel
+		$hostel->name = $request['name'];
+		$hostel->description = $request['description'];
+		$hostel->totalRooms = $request['totalRooms'];
+		$hostel->latitude = $request['latitude'];
+		$hostel->longitude = $request['longitude'];
+		$hostel->price = $request['price'];
+		$hostel->deposit = $request['deposit'];
+		$hostel->account = $request['account'];
+		$hostel->bookedUnits = $request['bookedUnits'];
+
+		// Save the update
+		$hostel->update();
+
+		// Update the rooms data
+		foreach ($hostel->rooms as $room){
+			$room->roomType = $request['roomType'];
+			$room->roomCategory = $request['roomCategory'];
+			$room->electricityBill = $request['electricityBill'];
+			$room->waterBill = $request['waterBill'];
+
+			$room->update();
+		}
+
+		alert()->success('Hostel data successfully updated.', 'Update Completed')->autoclose(3000);
+
+		return redirect()->route('admin.manage');
 	}
 }
