@@ -87,4 +87,16 @@ Route::prefix('admin')->group(function (){
 		'uses' => 'AdminController@viewHostel',
 		'as' => 'admin.view'
 	]);
+
+	// Route for editing hostel data
+	Route::get('/edit/{id}', [
+		'uses' => 'AdminController@editHostel',
+		'as' => 'admin.edit'
+	]);
+
+	// Route for updating hostel data
+	Route::post('/update', [
+		'uses' => 'AdminController@updateHostel',
+		'as' => 'admin.update'
+	]);
 });
