@@ -63,7 +63,7 @@ class AnalysisController extends Controller
 	}
 
     /**
-     * Fetch all hostels, sort by the most populat
+     * Fetch all hostels, sort by the most popular
      * @return array
      */
 	public static function manageHostels(){
