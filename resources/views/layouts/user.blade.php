@@ -1,10 +1,13 @@
 <!DOCTYPE html>
-<html lang="zxx">
+<html lang="{{ app()->getLocale() }}">
 
 <head>
 	<title>UniLink</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
+
+	<!-- CSRF Token -->
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 
 	<!-- External CSS libraries -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('nest/css/bootstrap.min.css') }}">
