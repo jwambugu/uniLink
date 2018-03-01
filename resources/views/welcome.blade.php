@@ -1,6 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
+	@include('inc.navbar')
 	<!-- Banner start -->
 	<div class="banner">
 		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
@@ -936,4 +937,5 @@
 		</div>
 	</div>
 	<!-- Intro section end -->
+	@include('inc.footer')
 @endsection
