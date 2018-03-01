@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Alert;
 use App\Admin;
+use App\Hostel;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -32,14 +33,6 @@ class PageController extends Controller
 	 * @return Request
 	 */
 	public function postLogin(Request $request){
-//		// Create a new admin
-//		$admin = new Admin([
-//			'username' => $request['username'],
-//			'email' => 'test@example.com',
-//			'password' => bcrypt($request['password']),
-//		]);
-//
-//		$admin->save();
 		
 		if (!auth()->guard('admin')->attempt([
 			'username' => $request['username'],
@@ -51,6 +44,21 @@ class PageController extends Controller
 		}
 		
 		return redirect()->route('admin.home');
+	}
+
+	/**
+	 * The index page for the application
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function userIndex(){
+		$popularHostels = Hostel::orderBy('bookedUnits', 'DESC')->with('images')->take(3)->get();
+		$recentHostels = Hostel::orderBy('created_at', 'DESC')->with('images')->take(4)->get();
+
+
+		return view('welcome',[
+			'popularHostels' => $popularHostels,
+			'recentHostels' => $recentHostels,
+		]);
 	}
 }
 
