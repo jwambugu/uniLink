@@ -1,3 +1,4 @@
+
 @extends('layouts.user')
 
 @section('content')
@@ -229,204 +230,65 @@
 			<!-- Main title -->
 			<div class="main-title">
 				<h1>
-					<span>Featured</span> Properties</h1>
+					<span>Popular</span> Hostels</h1>
 			</div>
 			<div class="row">
 				<div class="filtr-container">
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1, 2, 3">
-						<div class="property">
-							<!-- Property img -->
-							<a href="properties-details.html" class="property-img">
-								<div class="property-tag button alt featured">Featured</div>
-								<div class="property-tag button sale">For Sale</div>
-								<div class="property-price">$150,000</div>
-								<img src="{{ asset('nest/img/properties/properties-1.jpg') }}" alt="properties-1" class="img-responsive">
-							</a>
-							<!-- Property content -->
-							<div class="property-content">
-								<!-- title -->
-								<h1 class="title">
-									<a href="properties-details.html">Beautiful Single Home</a>
-								</h1>
-								<!-- Property address -->
-								<h3 class="property-address">
-									<a href="properties-details.html">
-										<i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
-									</a>
-								</h3>
-								<!-- Facilities List -->
-								<ul class="facilities-list clearfix">
-									<li>
-										<i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-										<span>4800 sq ft</span>
-									</li>
-									<li>
-										<i class="flaticon-bed"></i>
-										<span>3 Beds</span>
-									</li>
-									<li>
-										<i class="flaticon-monitor"></i>
-										<span>TV </span>
-									</li>
-									<li>
-										<i class="flaticon-holidays"></i>
-										<span> 2 Baths</span>
-									</li>
-									<li>
-										<i class="flaticon-vehicle"></i>
-										<span>1 Garage</span>
-									</li>
-									<li>
-										<i class="flaticon-building"></i>
-										<span> 3 Balcony</span>
-									</li>
-								</ul>
-								<!-- Property footer -->
-								<div class="property-footer">
-                                    <span class="left">
-                                        <i class="fa fa-calendar-o icon"></i> 5 days ago</span>
-									<span class="right">
-                                        <a href="#">
-                                            <i class="fa fa-heart-o icon"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-share-alt"></i>
-                                        </a>
-                                    </span>
-								</div>
-							</div>
-						</div>
-					</div>
+					@foreach($popularHostels as $hostel)
+						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1, 2, 3">
+							<div class="property">
+								<!-- Property img -->
+								<a href="properties-details.html" class="property-img">
+									<div class="property-tag button alt featured">Book Now</div>
+									<div class="property-tag button sale">{{ $hostel->totalRooms - $hostel->bookedUnits }} Remaining Rooms </div>
+									<div class="property-price">KES {{ number_format($hostel->price) }}</div>
 
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1">
-						<div class="property">
-							<!-- Property img -->
-							<a href="properties-details.html" class="property-img">
-								<div class="property-tag button alt featured">Featured</div>
-								<div class="property-tag button sale">For Rent</div>
-								<div class="property-price">$150,000</div>
-								<img src="{{ asset('nest/img/properties/properties-3.jpg') }}" alt="properties-3" class="img-responsive">
-							</a>
-							<!-- Property content -->
-							<div class="property-content">
-								<!-- title -->
-								<h1 class="title">
-									<a href="properties-details.html">Modern Family Home</a>
-								</h1>
-								<!-- Property address -->
-								<h3 class="property-address">
-									<a href="properties-details.html">
-										<i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
-									</a>
-								</h3>
-								<!-- Facilities List -->
-								<ul class="facilities-list clearfix">
-									<li>
-										<i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-										<span>4800 sq ft</span>
-									</li>
-									<li>
-										<i class="flaticon-bed"></i>
-										<span>3 Beds</span>
-									</li>
-									<li>
-										<i class="flaticon-monitor"></i>
-										<span>TV </span>
-									</li>
-									<li>
-										<i class="flaticon-holidays"></i>
-										<span> 2 Baths</span>
-									</li>
-									<li>
-										<i class="flaticon-vehicle"></i>
-										<span>1 Garage</span>
-									</li>
-									<li>
-										<i class="flaticon-building"></i>
-										<span> 3 Balcony</span>
-									</li>
-								</ul>
-								<!-- Property footer -->
-								<div class="property-footer">
-                                    <span class="left">
-                                        <i class="fa fa-calendar-o icon"></i> 5 days ago</span>
-									<span class="right">
-                                        <a href="#">
-                                            <i class="fa fa-heart-o icon"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-share-alt"></i>
-                                        </a>
-                                    </span>
-								</div>
-							</div>
-						</div>
-					</div>
+									<img src="/storage/hostel_images/{{ $hostel->images->first()->image }}" alt="properties-1" class="img-responsive">
 
-					<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="2, 3">
-						<div class="property">
-							<!-- Property img -->
-							<a href="properties-details.html" class="property-img">
-								<div class="property-tag button alt featured">Featured</div>
-								<div class="property-tag button sale">For Sale</div>
-								<div class="property-price">$150,000</div>
-								<img src="{{ asset('nest/img/properties/properties-4.jpg') }}" alt="properties-4" class="img-responsive">
-							</a>
-							<!-- Property content -->
-							<div class="property-content">
-								<!-- title -->
-								<h1 class="title">
-									<a href="properties-details.html">Sweet Family Home</a>
-								</h1>
-								<!-- Property address -->
-								<h3 class="property-address">
-									<a href="properties-details.html">
-										<i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
-									</a>
-								</h3>
-								<!-- Facilities List -->
-								<ul class="facilities-list clearfix">
-									<li>
-										<i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-										<span>4800 sq ft</span>
-									</li>
-									<li>
-										<i class="flaticon-bed"></i>
-										<span>3 Beds</span>
-									</li>
-									<li>
-										<i class="flaticon-monitor"></i>
-										<span>TV </span>
-									</li>
-									<li>
-										<i class="flaticon-holidays"></i>
-										<span> 2 Baths</span>
-									</li>
-									<li>
-										<i class="flaticon-vehicle"></i>
-										<span>1 Garage</span>
-									</li>
-									<li>
-										<i class="flaticon-building"></i>
-										<span> 3 Balcony</span>
-									</li>
-								</ul>
-								<!-- Property footer -->
-								<div class="property-footer">
+
+
+								</a>
+								<!-- Property content -->
+								<div class="property-content">
+									<!-- title -->
+									<h1 class="title">
+										<a href="properties-details.html">{{ $hostel->name }}</a>
+									</h1>
+									<!-- Property address -->
+									<h3 class="property-address">
+										<a href="properties-details.html">
+											<i class="fa fa-phone"></i> {{ $hostel->contact }}
+										</a>
+									</h3>
+									<!-- Facilities List -->
+									<ul class="facilities-list clearfix">
+										<li>
+											<i class="fa fa-money"></i>
+											<span>KES {{ number_format($hostel->deposit) }}</span>
+										</li>
+										<li>
+											<i class="flaticon-bed"></i>
+											<span>{{ $hostel->totalRooms }} Rooms</span>
+										</li>
+										<li>
+											<i class="flaticon-monitor"></i>
+											<span>TV </span>
+										</li>
+									</ul>
+									<!-- Property footer -->
+									<div class="property-footer">
                                     <span class="left">
-                                        <i class="fa fa-calendar-o icon"></i> 5 days ago</span>
-									<span class="right">
+                                        <i class="fa fa-hashtag"></i> {{ $hostel->bookedUnits }} Booked </span>
+										<span class="right">
                                         <a href="#">
-                                            <i class="fa fa-heart-o icon"></i>
-                                        </a>
-                                        <a href="#">
-                                            <i class="fa fa-share-alt"></i>
+	                                        Book Now <i class="fa fa-key"></i>
                                         </a>
                                     </span>
+									</div>
 								</div>
 							</div>
 						</div>
-					</div>
+					@endforeach
 				</div>
 			</div>
 		</div>
@@ -487,7 +349,7 @@
 			<!-- Main title -->
 			<div class="main-title">
 				<h1>
-					<span>Recently</span> Properties</h1>
+					<span>Recent</span> Hostels</h1>
 			</div>
 			<div class="row">
 				<div class="carousel our-partners slide" id="ourPartners2">
@@ -501,232 +363,57 @@
 					</div>
 					<div class="carousel-inner">
 						<div class="item active">
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-								<!-- Property start -->
-								<div class="property">
-									<!-- Property img -->
-									<a href="properties-details.html" class="property-img">
-										<img src="{{ asset('nest/img/properties/properties-3.jpg') }}" alt="properties-3" class="img-responsive">
-									</a>
-									<!-- Property content -->
-									<div class="property-content">
-										<!-- title -->
-										<h1 class="title">
-											<a href="properties-details.html">Modern Family Home</a>
-										</h1>
-										<!-- Property address -->
-										<h3 class="property-address">
-											<a href="properties-details.html">
-												<i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
-											</a>
-										</h3>
-										<!-- Facilities List -->
-										<ul class="facilities-list clearfix">
-											<li>
-												<i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-												<span>4800 sq ft</span>
-											</li>
-											<li>
-												<i class="flaticon-bed"></i>
-												<span>3 Beds</span>
-											</li>
-											<li>
-												<i class="flaticon-holidays"></i>
-												<span> 2 Baths</span>
-											</li>
-											<li>
-												<i class="flaticon-vehicle"></i>
-												<span>1 Garage</span>
-											</li>
-										</ul>
-										<!-- Property footer -->
-										<div class="property-footer">
-                                            <span class="left">
-                                                <i class="fa fa-calendar-o icon"></i> 5 days ago</span>
-											<span class="right">
-                                                <a href="#">
-                                                    <i class="fa fa-heart-o icon"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="fa fa-share-alt"></i>
-                                                </a>
-                                            </span>
+							@foreach($recentHostels as $recentHostel)
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="property">
+										<!-- Property img -->
+										<a href="properties-details.html" class="property-img">
+											<div class="property-tag button alt featured">Book Now</div>
+											<div class="property-tag button sale">{{ $recentHostel->totalRooms - $recentHostel->bookedUnits }} Remaining Rooms </div>
+											<div class="property-price">KES {{ number_format($recentHostel->price) }}</div>
+
+											<img src="/storage/hostel_images/{{ $recentHostel->images->first()->image }}" alt="properties-1" class="img-responsive">
+
+
+
+										</a>
+										<!-- Property content -->
+										<div class="property-content">
+											<!-- title -->
+											<h1 class="title">
+												<a href="properties-details.html">{{ $recentHostel->name }}</a>
+											</h1>
+											<!-- Property address -->
+											<h3 class="property-address">
+												<a href="properties-details.html">
+													<i class="fa fa-phone"></i> {{ $recentHostel->contact }}
+												</a>
+											</h3>
+											<!-- Facilities List -->
+											<ul class="facilities-list clearfix">
+												<li>
+													<i class="fa fa-money"></i>
+													<span>KES {{ number_format($recentHostel->deposit) }}</span>
+												</li>
+												<li>
+													<i class="flaticon-bed"></i>
+													<span>{{ $recentHostel->totalRooms }} Rooms</span>
+												</li>
+											</ul>
+											<!-- Property footer -->
+											<div class="property-footer">
+                                    <span class="left">
+                                        <i class="fa fa-hashtag"></i> {{ $recentHostel->bookedUnits }} Booked </span>
+												<span class="right">
+                                        <a href="#">
+	                                        Book Now <i class="fa fa-key"></i>
+                                        </a>
+                                    </span>
+											</div>
 										</div>
 									</div>
 								</div>
-								<!-- Property end -->
-							</div>
-						</div>
-						<div class="item">
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-								<!-- Property start -->
-								<div class="property">
-									<!-- Property img -->
-									<a href="properties-details.html" class="property-img">
-										<img src="{{ asset('nest/img/properties/properties-1.jpg') }}" alt="properties-1" class="img-responsive">
-									</a>
-									<!-- Property content -->
-									<div class="property-content">
-										<!-- title -->
-										<h1 class="title">
-											<a href="properties-details-4.html">Beautiful Single Home</a>
-										</h1>
-										<!-- Property address -->
-										<h3 class="property-address">
-											<a href="properties-details.html">
-												<i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
-											</a>
-										</h3>
-										<!-- Facilities List -->
-										<ul class="facilities-list clearfix">
-											<li>
-												<i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-												<span>4800 sq ft</span>
-											</li>
-											<li>
-												<i class="flaticon-bed"></i>
-												<span>3 Beds</span>
-											</li>
-											<li>
-												<i class="flaticon-holidays"></i>
-												<span> 2 Baths</span>
-											</li>
-											<li>
-												<i class="flaticon-vehicle"></i>
-												<span>1 Garage</span>
-											</li>
-										</ul>
-										<!-- Property footer -->
-										<div class="property-footer">
-                                            <span class="left">
-                                                <i class="fa fa-calendar-o icon"></i> 5 days ago</span>
-											<span class="right">
-                                                <a href="#">
-                                                    <i class="fa fa-heart-o icon"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="fa fa-share-alt"></i>
-                                                </a>
-                                            </span>
-										</div>
-									</div>
-								</div>
-								<!-- Property end -->
-							</div>
-						</div>
-						<div class="item">
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-								<!-- Property start -->
-								<div class="property">
-									<!-- Property img -->
-									<a href="properties-details.html" class="property-img">
-										<img src="{{ asset('nest/img/properties/properties-6.jpg') }}" alt="properties-6" class="img-responsive">
-									</a>
-									<!-- Property content -->
-									<div class="property-content">
-										<!-- title -->
-										<h1 class="title">
-											<a href="properties-details.html">Park Avenue</a>
-										</h1>
-										<!-- Property address -->
-										<h3 class="property-address">
-											<a href="properties-details.html">
-												<i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
-											</a>
-										</h3>
-										<!-- Facilities List -->
-										<ul class="facilities-list clearfix">
-											<li>
-												<i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-												<span>4800 sq ft</span>
-											</li>
-											<li>
-												<i class="flaticon-bed"></i>
-												<span>3 Beds</span>
-											</li>
-											<li>
-												<i class="flaticon-holidays"></i>
-												<span> 2 Baths</span>
-											</li>
-											<li>
-												<i class="flaticon-vehicle"></i>
-												<span>1 Garage</span>
-											</li>
-										</ul>
-										<!-- Property footer -->
-										<div class="property-footer">
-                                            <span class="left">
-                                                <i class="fa fa-calendar-o icon"></i> 5 days ago</span>
-											<span class="right">
-                                                <a href="#">
-                                                    <i class="fa fa-heart-o icon"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="fa fa-share-alt"></i>
-                                                </a>
-                                            </span>
-										</div>
-									</div>
-								</div>
-								<!-- Property end -->
-							</div>
-						</div>
-						<div class="item">
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-								<!-- Property start -->
-								<div class="property">
-									<!-- Property img -->
-									<a href="properties-details.html" class="property-img">
-										<img src="{{ asset('nest/img/properties/properties-2.jpg') }}" alt="properties-2" class="img-responsive">
-									</a>
-									<!-- Property content -->
-									<div class="property-content">
-										<!-- title -->
-										<h1 class="title">
-											<a href="properties-details.html">Sweet Family Home</a>
-										</h1>
-										<!-- Property address -->
-										<h3 class="property-address">
-											<a href="properties-details.html">
-												<i class="fa fa-map-marker"></i>123 Kathal St. Tampa City,
-											</a>
-										</h3>
-										<!-- Facilities List -->
-										<ul class="facilities-list clearfix">
-											<li>
-												<i class="flaticon-square-layouting-with-black-square-in-east-area"></i>
-												<span>4800 sq ft</span>
-											</li>
-											<li>
-												<i class="flaticon-bed"></i>
-												<span>3 Beds</span>
-											</li>
-											<li>
-												<i class="flaticon-holidays"></i>
-												<span> 2 Baths</span>
-											</li>
-											<li>
-												<i class="flaticon-vehicle"></i>
-												<span>1 Garage</span>
-											</li>
-										</ul>
-										<!-- Property footer -->
-										<div class="property-footer">
-                                            <span class="left">
-                                                <i class="fa fa-calendar-o icon"></i> 5 days ago</span>
-											<span class="right">
-                                                <a href="#">
-                                                    <i class="fa fa-heart-o icon"></i>
-                                                </a>
-                                                <a href="#">
-                                                    <i class="fa fa-share-alt"></i>
-                                                </a>
-                                            </span>
-										</div>
-									</div>
-								</div>
-								<!-- Property end -->
-							</div>
+							@endforeach
 						</div>
 					</div>
 				</div>
@@ -824,7 +511,7 @@
 			<!-- Main title 2 -->
 			<div class="main-title">
 				<h1>
-					<span>Pricing</span> Tables</h1>
+					<span>Hostels</span> Pricing</h1>
 			</div>
 			<div class="row">
 				<div class="pricing-container margin-top-40">
@@ -832,18 +519,18 @@
 						<div class="plan">
 							<div class="price-header">
 								<h3>Standard</h3>
-								<h1>$19.99</h1>
+								<h1>KES {{ number_format('10000') }}</h1>
 							</div>
 							<div class="plan-features">
 								<ul>
-									<li>15 Projects</li>
-									<li>30GB Storage</li>
-									<li>Unilimited Data Transfer</li>
-									<li>50 GB Bandwith</li>
+									<li>2KM Away</li>
+									<li>Ample Storage</li>
+									<li>Limited Studying Space</li>
+									<li>2 MBPS WiFi</li>
 									<li>Enhanced Security</li>
 								</ul>
 								<div class="clearfix"></div>
-								<a href="submit-property.html" class="btn button-sm button-theme btn-color">Get Started</a>
+								<a href="#" class="btn button-sm button-theme btn-color">Get Started</a>
 							</div>
 						</div>
 					</div>
@@ -851,21 +538,20 @@
 					<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 col-pad wow fadeInUp delay-03s">
 						<div class="plan featured">
 							<div class="listing-badges">
-								<span class="featured">Featured</span>
+								<span class="featured">Popular</span>
 							</div>
 
 							<div class="price-header">
-								<h3>Bussiness</h3>
-								<h1>$19.99</h1>
+								<h3>Economical</h3>
+								<h1>KES {{ number_format('15000') }}</h1>
 							</div>
 							<div class="plan-features">
 								<ul>
-									<li>15 Projects</li>
-									<li>30GB Storage</li>
-									<li>Unilimited Data Transfer</li>
-									<li>50 GB Bandwith</li>
+									<li>1.5KM Away</li>
+									<li>Ample Storage</li>
+									<li>Ample Studying Space</li>
+									<li>5 MBPS WiFi</li>
 									<li>Enhanced Security</li>
-									<li>Unilimited Data</li>
 								</ul>
 								<a href="submit-property.html" class="btn button-sm button-theme">Get Started</a>
 							</div>
@@ -876,16 +562,16 @@
 						<div class="plan">
 							<div class="price-header">
 								<h3>Premium</h3>
-								<h1>$9.99</h1>
+								<h1>KES {{ number_format('20000') }}</h1>
 							</div>
 
 							<div class="plan-features">
 								<ul>
-									<li>15 Projects</li>
-									<li>30GB Storage</li>
-									<li>Unilimited Data Transfer</li>
-									<li>50 GB Bandwith</li>
-									<li>Enhanced Security</li>
+									<li>1KM Away</li>
+									<li>Spacious Storage</li>
+									<li>Spacious Studying Space</li>
+									<li>8 MBPS WiFi</li>
+									<li>24 hrs Enhanced Security</li>
 								</ul>
 								<div class="clearfix"></div>
 								<a href="submit-property.html" class="btn button-sm button-theme btn-color">Get Started</a>
@@ -897,16 +583,16 @@
 						<div class="plan">
 							<div class="price-header">
 								<h3>Ultimate</h3>
-								<h1>$9.99</h1>
+								<h1>KES {{ number_format('25000') }}</h1>
 							</div>
 
 							<div class="plan-features">
 								<ul>
-									<li>15 Projects</li>
-									<li>30GB Storage</li>
-									<li>Unilimited Data Transfer</li>
-									<li>50 GB Bandwith</li>
-									<li>Enhanced Security</li>
+									<li>&lt; 0.5 KM Away</li>
+									<li>Super Spacious Storage</li>
+									<li>Large Studying Space</li>
+									<li>15 MBPS WiFi</li>
+									<li>24 hrs CCTV Security</li>
 								</ul>
 								<div class="clearfix"></div>
 								<a href="submit-property.html" class="btn button-sm button-theme btn-color">Get Started</a>
@@ -927,7 +613,7 @@
 					<img src="{{ asset('nest/img/logos/logo-2.png') }}" alt="logo-2">
 				</div>
 				<div class="col-md-7 col-sm-6 col-xs-12">
-					<p>lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+					<p>We got you covered. No more hustle to get a room. Book at your own comfort anywhere, anytime <i class="fa fa-smile-o"></i></p>
 				</div>
 				<div class="col-md-2 col-sm-3 col-xs-12">
 					<a href="#" class="btn button-md button-theme hidden-xs">Contact now</a>
