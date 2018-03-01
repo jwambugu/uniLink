@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('user.welcome');
+Route::get('/',[
+	'uses' => 'PageController@userIndex',
+	'as' => 'user.welcome'
+]);
 
 Auth::routes();
 
