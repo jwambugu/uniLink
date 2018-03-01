@@ -101,11 +101,11 @@
 									</li>
 									<!-- /.item -->
 									<!-- /.box-body -->
+								@endforeach
 									<div class="box-footer text-center">
 										<a href="{{ route('admin.manage') }}" class="uppercase">View All Hostels</a>
 									</div>
 									<!-- /.box-footer -->
-								@endforeach
 							@else
 								<h2 class="text-center text-red">No Hostels Available</h2>
 								<a href="{{ route('admin.add') }}" class="btn btn-primary col-sm-offset-5">Add Hostel</a>
