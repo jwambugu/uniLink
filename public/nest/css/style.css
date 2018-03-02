@@ -1320,8 +1320,8 @@ input[type=checkbox]:checked + label:before {
 	background: 0 0
 }
 
-.content-area {
-	padding: 100px 0 70px
+.content-area-faq {
+	padding: 20px 0 70px
 }
 
 .content-area-2 {
