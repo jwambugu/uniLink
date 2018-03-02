@@ -60,5 +60,13 @@ class PageController extends Controller
 			'recentHostels' => $recentHostels,
 		]);
 	}
+
+	/**
+	 * Show the FAQs page
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function getFaq(){
+		return view('user.faq');
+	}
 }
 
