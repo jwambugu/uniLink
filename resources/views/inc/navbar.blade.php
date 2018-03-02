@@ -44,14 +44,14 @@
 			<!-- Collect the nav links, forms, and other content for toggling -->
 			<div class="navbar-collapse collapse" role="navigation" aria-expanded="true" id="app-navigation">
 				<ul class="nav navbar-nav">
-					<li class="active">
-						<a tabindex="0" href="#">Home</a>
+					<li>
+						<a tabindex="0" href="{{ url('/') }}">Home</a>
 					</li>
 					<li>
 						<a tabindex="0" href="/properties-list-leftside.html">Properties</a>
 					</li>
 					<li>
-						<a tabindex="0" href="/faq.html">FAQs</a>
+						<a tabindex="0" href="{{ route('user.faq') }}">FAQs</a>
 					</li>
 					<li>
 						<a tabindex="0" href="/contact.html">Contact Us</a>
