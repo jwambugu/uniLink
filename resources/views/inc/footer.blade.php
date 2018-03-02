@@ -86,7 +86,7 @@
 					</div>
 				</div>
 				<!-- Links -->
-				<div class="col-lg-2 col-md-2 col-sm-6 col-xs-12">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="footer-item">
 						<div class="main-title-2">
 							<h1>Links</h1>
@@ -116,45 +116,8 @@
 						</ul>
 					</div>
 				</div>
-				<!-- Tags -->
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-					<div class="footer-item tags-box">
-						<div class="main-title-2">
-							<h1>Tags</h1>
-						</div>
-						<ul class="tags">
-							<li>
-								<a href="#">Image</a>
-							</li>
-							<li>
-								<a href="#">Features</a>
-							</li>
-							<li>
-								<a href="#">Typography</a>
-							</li>
-							<li>
-								<a href="#">Gallery</a>
-							</li>
-							<li>
-								<a href="#">Slideshow</a>
-							</li>
-							<li>
-								<a href="#">Post Formats</a>
-							</li>
-							<li>
-								<a href="#">Sellers</a>
-							</li>
-							<li>
-								<a href="#">WooCommerce</a>
-							</li>
-							<li>
-								<a href="#">Shortcodes</a>
-							</li>
-						</ul>
-					</div>
-				</div>
 				<!-- Recent cars -->
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="footer-item popular-posts">
 						<div class="main-title-2">
 							<h1>popular posts</h1>
