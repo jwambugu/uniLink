@@ -11,14 +11,23 @@
 |
 */
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+/**
+ * All the users routes start here
+*/
 Route::get('/',[
 	'uses' => 'PageController@userIndex',
 	'as' => 'user.welcome'
 ]);
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/faq', [
+	'uses' => 'PageController@getFaq',
+	'as' => 'user.faq'
+]);
 
 /**
  * Here we have all the admins routes
