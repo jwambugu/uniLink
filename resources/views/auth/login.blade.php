@@ -43,7 +43,7 @@
 										Remember me
 									</label>
 								</div>
-								{{--<a href="{{ route('password.request') }}" class="link-not-important pull-right">Forgot Password</a>--}}
+								<a href="{{ route('user.reset') }}" class="link-not-important pull-right">Forgot Password</a>
 								<div class="clearfix"></div>
 							</div>
 							<div class="form-group">
@@ -56,7 +56,7 @@
 					<!-- Footer -->
 					<div class="footer">
                         <span>
-                            New to UniLink? <a href="{{ route('register') }}">Sign Up</a>
+                            New to UniLink? <a href="{{ route('register') }}">Register</a>
                         </span>
 					</div>
 				</div>
