@@ -60,27 +60,27 @@
 							<h1>Contact Us</h1>
 						</div>
 						<p>
-							Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printing and
-							typesetting
+							We are always here to listen. Just give us a call on an email and we will be gld to help.
 						</p>
 						<ul class="personal-info">
 							<li>
 								<i class="fa fa-map-marker"></i>
-								Address: 20/F Green Road, Dhanmondi, Dhaka
+								Address: 21 - 50505 Kenya
 							</li>
 							<li>
 								<i class="fa fa-envelope"></i>
 								Email:
-								<a href="mailto:sales@hotelempire.com">info@themevessel.com</a>
+								<a href="
+#">info@unilink.com</a>
 							</li>
 							<li>
 								<i class="fa fa-phone"></i>
 								Phone:
-								<a href="tel:+55-417-634-7071">+55 4XX-634-7071</a>
+								<a href="#">+254 700 000 000</a>
 							</li>
 							<li>
 								<i class="fa fa-fax"></i>
-								Fax: +55 4XX-634-7071
+								Fax: 061 700 000 000
 							</li>
 						</ul>
 					</div>
@@ -93,25 +93,16 @@
 						</div>
 						<ul class="links">
 							<li>
-								<a href="index.html">Home</a>
+								<a href="{{ route('user.welcome') }}">Home</a>
 							</li>
 							<li>
-								<a href="about.html">About Us</a>
+								<a href="{{ route('user.contact') }}">Hostels</a>
 							</li>
 							<li>
-								<a href="contact.html">Contact Us</a>
+								<a href="{{ route('user.faq') }}">Faqs</a>
 							</li>
 							<li>
-								<a href="blog-single.html">Blog</a>
-							</li>
-							<li>
-								<a href="properties-list-rightside.html">properties Listing</a>
-							</li>
-							<li>
-								<a href="properties-grid-rightside.html">properties Grid</a>
-							</li>
-							<li>
-								<a href="properties-details.html">properties Details</a>
+								<a href="{{ route('user.contact') }}">Contact Us</a>
 							</li>
 						</ul>
 					</div>
@@ -120,7 +111,7 @@
 				<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
 					<div class="footer-item popular-posts">
 						<div class="main-title-2">
-							<h1>popular posts</h1>
+							<h1>Popular Hostels</h1>
 						</div>
 						<div class="media">
 							<div class="media-left">
@@ -128,11 +119,11 @@
 							</div>
 							<div class="media-body">
 								<h3 class="media-heading">
-									<a href="#">Modern Design Building</a>
+									<a href="#">The Unknown</a>
 								</h3>
-								<p>21 October, 2016</p>
+								<p>0750 123 455</p>
 								<div class="comments-icon">
-									<i class="fa fa-comments"></i>45 comments
+									<i class="fa fa-money"></i>KES {{ number_format('7000') }}
 								</div>
 							</div>
 						</div>
@@ -142,11 +133,11 @@
 							</div>
 							<div class="media-body">
 								<h3 class="media-heading">
-									<a href="#">Real Estate Expo 2016</a>
+									<a href="#">The Hub</a>
 								</h3>
-								<p>10 October, 2016</p>
+								<p>0750 321 455</p>
 								<div class="comments-icon">
-									<i class="fa fa-comments"></i>32 comments
+									<i class="fa fa-money"></i>KES {{ number_format('8000') }}
 								</div>
 							</div>
 						</div>
@@ -156,11 +147,11 @@
 							</div>
 							<div class="media-body">
 								<h3 class="media-heading">
-									<a href="#">Construction and Development</a>
+									<a href="#">Rayne's</a>
 								</h3>
-								<p>10 October, 2016</p>
+								<p>0750 321 655</p>
 								<div class="comments-icon">
-									<i class="fa fa-comments"></i>58 comments
+									<i class="fa fa-comments"></i>KES {{ number_format('9000') }}
 								</div>
 							</div>
 						</div>
