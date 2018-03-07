@@ -68,5 +68,13 @@ class PageController extends Controller
 	public function getFaq(){
 		return view('user.faq');
 	}
+
+	/**
+	 * Show the contact page
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function getContact(){
+		return view('user.contact');
+	}
 }
 
