@@ -5,7 +5,7 @@
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
 				<div class="list-inline">
 					<a href="tel:1-8X0-666-8X88">
-						<i class="fa fa-phone"></i>10700 000 000</a>
+						<i class="fa fa-phone"></i>+254 700 000 000</a>
 					<a href="tel:info@themevessel.com">
 						<i class="fa fa-envelope"></i>info@unilink.com</a>
 				</div>
