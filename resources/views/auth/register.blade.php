@@ -1,4 +1,4 @@
-@extends('layouts.user')
+@extends('layouts.auth')
 
 @section('content')
 <!-- Top header start -->
