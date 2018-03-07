@@ -35,6 +35,12 @@ Route::get('/contact', [
 	'as' => 'user.contact'
 ]);
 
+// Show the password reset page
+Route::get('/reset', [
+	'uses' => 'PageController@getReset',
+	'as' => 'user.reset'
+]);
+
 
 /**
  * Here we have all the admins routes
