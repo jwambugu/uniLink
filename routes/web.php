@@ -29,6 +29,13 @@ Route::get('/faq', [
 	'as' => 'user.faq'
 ]);
 
+// Show the contact page
+Route::get('/contact', [
+	'uses' => 'PageController@getContact',
+	'as' => 'user.contact'
+]);
+
+
 /**
  * Here we have all the admins routes
  * @prefix admin
