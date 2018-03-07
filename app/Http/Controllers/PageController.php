@@ -76,5 +76,13 @@ class PageController extends Controller
 	public function getContact(){
 		return view('user.contact');
 	}
+
+	/**
+	 * Show the password reset page
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function getReset(){
+		return view('auth.passwords.email');
+	}
 }
 
