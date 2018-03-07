@@ -295,216 +295,6 @@
 	</div>
 	<!-- Featured properties end -->
 
-	<!-- What are you looking for? start -->
-	<div class="mrg-btm-100 our-service">
-		<div class="container">
-			<!-- Main title -->
-			<div class="main-title">
-				<h1>
-					<span>What are you</span> looking for?</h1>
-			</div>
-
-			<div class="row wow">
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInLeft delay-04s">
-					<div class="content">
-						<i class="flaticon-apartment"></i>
-						<h4>Apartments</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-							et dolore magna aliqua. Ut enim ad minim veniam</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInLeft delay-04s">
-					<div class="content">
-						<i class="flaticon-internet"></i>
-						<h4>Houses</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-							et dolore magna aliqua. Ut enim ad minim veniam</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInRight delay-04s">
-					<div class="content">
-						<i class="flaticon-vehicle"></i>
-						<h4>Garages</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-							et dolore magna aliqua. Ut enim ad minim veniam</p>
-					</div>
-				</div>
-				<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12 wow fadeInRight delay-04s">
-					<div class="content">
-						<i class="flaticon-symbol"></i>
-						<h4>Commercial</h4>
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore
-							et dolore magna aliqua. Ut enim ad minim veniam</p>
-					</div>
-				</div>
-			</div>
-			<a href="#" class="btn button-md button-theme">Read More</a>
-		</div>
-	</div>
-	<!-- What are you looking for? end -->
-
-	<!-- Recently properties start -->
-	<div class="recently-properties mrg-btm-70 chevron-icon">
-		<div class="container">
-			<!-- Main title -->
-			<div class="main-title">
-				<h1>
-					<span>Recent</span> Hostels</h1>
-			</div>
-			<div class="row">
-				<div class="carousel our-partners slide" id="ourPartners2">
-					<div class="col-lg-12 mrg-btm-30">
-						<a class="right carousel-control" href="#ourPartners2" data-slide="prev">
-							<i class="fa fa-chevron-left icon-prev"></i>
-						</a>
-						<a class="right carousel-control" href="#ourPartners2" data-slide="next">
-							<i class="fa fa-chevron-right icon-next"></i>
-						</a>
-					</div>
-					<div class="carousel-inner">
-						<div class="item active">
-							@foreach($recentHostels as $recentHostel)
-								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-									<div class="property">
-										<!-- Property img -->
-										<a href="properties-details.html" class="property-img">
-											<div class="property-tag button alt featured">Book Now</div>
-											<div class="property-tag button sale">{{ $recentHostel->totalRooms - $recentHostel->bookedUnits }} Remaining Rooms </div>
-											<div class="property-price">KES {{ number_format($recentHostel->price) }}</div>
-
-											<img src="/storage/hostel_images/{{ $recentHostel->images->first()->image }}" alt="properties-1" class="img-responsive">
-
-
-
-										</a>
-										<!-- Property content -->
-										<div class="property-content">
-											<!-- title -->
-											<h1 class="title">
-												<a href="properties-details.html">{{ $recentHostel->name }}</a>
-											</h1>
-											<!-- Property address -->
-											<h3 class="property-address">
-												<a href="properties-details.html">
-													<i class="fa fa-phone"></i> {{ $recentHostel->contact }}
-												</a>
-											</h3>
-											<!-- Facilities List -->
-											<ul class="facilities-list clearfix">
-												<li>
-													<i class="fa fa-money"></i>
-													<span>KES {{ number_format($recentHostel->deposit) }}</span>
-												</li>
-												<li>
-													<i class="flaticon-bed"></i>
-													<span>{{ $recentHostel->totalRooms }} Rooms</span>
-												</li>
-											</ul>
-											<!-- Property footer -->
-											<div class="property-footer">
-                                    <span class="left">
-                                        <i class="fa fa-hashtag"></i> {{ $recentHostel->bookedUnits }} Booked </span>
-												<span class="right">
-                                        <a href="#">
-	                                        Book Now <i class="fa fa-key"></i>
-                                        </a>
-                                    </span>
-											</div>
-										</div>
-									</div>
-								</div>
-							@endforeach
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Partners block end -->
-
-	<!-- Categories strat -->
-	<div class="categories">
-		<div class="container">
-			<!-- Main title -->
-			<div class="main-title">
-				<h1>
-					<span>Popular</span> Places</h1>
-			</div>
-			<div class="clearfix"></div>
-			<div class="row wow">
-				<div class="col-lg-7 col-md-7 col-sm-12">
-					<div class="row">
-						<div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
-							<div class="category">
-								<div class="category_bg_box cat-1-bg">
-									<div class="category-overlay">
-                                        <span class="category-content">
-                                            <span class="category-title">Florida</span>
-                                            <br>
-                                            <span class="category-subtitle">14 Properties</span>
-                                            <br>
-                                            <a href="#" class="btn button-sm button-theme">View All</a>
-                                        </span>
-										<!-- /.category-content -->
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-6 col-pad wow fadeInLeft delay-04s">
-							<div class="category">
-								<div class="category_bg_box cat-2-bg">
-									<div class="category-overlay">
-                                        <span class="category-content">
-                                            <span class="category-title">California</span>
-                                            <br>
-                                            <span class="category-subtitle">14 Properties</span>
-                                            <br>
-                                            <a href="#" class="btn button-sm button-theme ">View All</a>
-                                        </span>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<div class="col-sm-12 col-pad wow fadeInUp delay-04s">
-							<div class="category">
-								<div class="category_bg_box cat-3-bg">
-									<div class="category-overlay">
-                                        <span class="category-content">
-                                            <span class="category-title">New York</span>
-                                            <br>
-                                            <span class="category-subtitle">27 Properties</span>
-                                            <br>
-                                            <a href="#" class="btn button-sm button-theme ">View All</a>
-                                        </span>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-5 col-md-5 col-sm-12 col-pad wow fadeInRight delay-04s">
-					<div class="category">
-						<div class="category_bg_box category_long_bg cat-4-bg">
-							<div class="category-overlay">
-                                <span class="category-content">
-                                    <span class="category-title">San Francisco</span>
-                                    <br>
-                                    <span class="category-subtitle">14 Properties</span>
-                                    <br>
-                                    <a href="#" class="btn button-sm button-theme ">View All</a>
-                                </span>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Categories end-->
-
 	<!-- Pricing tables start -->
 	<div class="content-area-5 pricing-tables">
 		<div class="container">
@@ -605,6 +395,168 @@
 	</div>
 	<!-- Pricing tables end -->
 
+	<!-- Recently properties start -->
+	<div class="recently-properties mrg-btm-70 chevron-icon">
+		<div class="container">
+			<!-- Main title -->
+			<div class="main-title">
+				<h1>
+					<span>Recent</span> Hostels</h1>
+			</div>
+			<div class="row">
+				<div class="carousel our-partners slide" id="ourPartners2">
+					<div class="col-lg-12 mrg-btm-30">
+						<a class="right carousel-control" href="#ourPartners2" data-slide="prev">
+							<i class="fa fa-chevron-left icon-prev"></i>
+						</a>
+						<a class="right carousel-control" href="#ourPartners2" data-slide="next">
+							<i class="fa fa-chevron-right icon-next"></i>
+						</a>
+					</div>
+					<div class="carousel-inner">
+						<div class="item active">
+							@foreach($recentHostels as $recentHostel)
+								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+									<div class="property">
+										<!-- Property img -->
+										<a href="properties-details.html" class="property-img">
+											<div class="property-tag button alt featured">Book Now</div>
+											<div class="property-tag button sale">{{ $recentHostel->totalRooms - $recentHostel->bookedUnits }} Remaining Rooms </div>
+											<div class="property-price">KES {{ number_format($recentHostel->price) }}</div>
+
+											<img src="/storage/hostel_images/{{ $recentHostel->images->first()->image }}" alt="properties-1" class="img-responsive">
+
+
+
+										</a>
+										<!-- Property content -->
+										<div class="property-content">
+											<!-- title -->
+											<h1 class="title">
+												<a href="properties-details.html">{{ $recentHostel->name }}</a>
+											</h1>
+											<!-- Property address -->
+											<h3 class="property-address">
+												<a href="properties-details.html">
+													<i class="fa fa-phone"></i> {{ $recentHostel->contact }}
+												</a>
+											</h3>
+											<!-- Facilities List -->
+											<ul class="facilities-list clearfix">
+												<li>
+													<i class="fa fa-money"></i>
+													<span>KES {{ number_format($recentHostel->deposit) }}</span>
+												</li>
+												<li>
+													<i class="flaticon-bed"></i>
+													<span>{{ $recentHostel->totalRooms }} Rooms</span>
+												</li>
+											</ul>
+											<!-- Property footer -->
+											<div class="property-footer">
+                                    <span class="left">
+                                        <i class="fa fa-hashtag"></i> {{ $recentHostel->bookedUnits }} Booked </span>
+												<span class="right">
+                                        <a href="#">
+	                                        Book Now <i class="fa fa-key"></i>
+                                        </a>
+                                    </span>
+											</div>
+										</div>
+									</div>
+								</div>
+							@endforeach
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Partners block end -->
+
+	{{--<!-- Categories strat -->--}}
+	{{--<div class="categories">--}}
+		{{--<div class="container">--}}
+			{{--<!-- Main title -->--}}
+			{{--<div class="main-title">--}}
+				{{--<h1>--}}
+					{{--<span>Popular</span> Places</h1>--}}
+			{{--</div>--}}
+			{{--<div class="clearfix"></div>--}}
+			{{--<div class="row wow">--}}
+				{{--<div class="col-lg-7 col-md-7 col-sm-12">--}}
+					{{--<div class="row">--}}
+						{{--<div class="col-sm-6 col-pad wow fadeInLeft delay-04s">--}}
+							{{--<div class="category">--}}
+								{{--<div class="category_bg_box cat-1-bg">--}}
+									{{--<div class="category-overlay">--}}
+                                        {{--<span class="category-content">--}}
+                                            {{--<span class="category-title">Florida</span>--}}
+                                            {{--<br>--}}
+                                            {{--<span class="category-subtitle">14 Properties</span>--}}
+                                            {{--<br>--}}
+                                            {{--<a href="#" class="btn button-sm button-theme">View All</a>--}}
+                                        {{--</span>--}}
+										{{--<!-- /.category-content -->--}}
+									{{--</div>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+
+						{{--<div class="col-sm-6 col-pad wow fadeInLeft delay-04s">--}}
+							{{--<div class="category">--}}
+								{{--<div class="category_bg_box cat-2-bg">--}}
+									{{--<div class="category-overlay">--}}
+                                        {{--<span class="category-content">--}}
+                                            {{--<span class="category-title">California</span>--}}
+                                            {{--<br>--}}
+                                            {{--<span class="category-subtitle">14 Properties</span>--}}
+                                            {{--<br>--}}
+                                            {{--<a href="#" class="btn button-sm button-theme ">View All</a>--}}
+                                        {{--</span>--}}
+									{{--</div>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+
+						{{--<div class="col-sm-12 col-pad wow fadeInUp delay-04s">--}}
+							{{--<div class="category">--}}
+								{{--<div class="category_bg_box cat-3-bg">--}}
+									{{--<div class="category-overlay">--}}
+                                        {{--<span class="category-content">--}}
+                                            {{--<span class="category-title">New York</span>--}}
+                                            {{--<br>--}}
+                                            {{--<span class="category-subtitle">27 Properties</span>--}}
+                                            {{--<br>--}}
+                                            {{--<a href="#" class="btn button-sm button-theme ">View All</a>--}}
+                                        {{--</span>--}}
+									{{--</div>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+				{{--</div>--}}
+
+				{{--<div class="col-lg-5 col-md-5 col-sm-12 col-pad wow fadeInRight delay-04s">--}}
+					{{--<div class="category">--}}
+						{{--<div class="category_bg_box category_long_bg cat-4-bg">--}}
+							{{--<div class="category-overlay">--}}
+                                {{--<span class="category-content">--}}
+                                    {{--<span class="category-title">San Francisco</span>--}}
+                                    {{--<br>--}}
+                                    {{--<span class="category-subtitle">14 Properties</span>--}}
+                                    {{--<br>--}}
+                                    {{--<a href="#" class="btn button-sm button-theme ">View All</a>--}}
+                                {{--</span>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+					{{--</div>--}}
+				{{--</div>--}}
+			{{--</div>--}}
+		{{--</div>--}}
+	{{--</div>--}}
+	{{--<!-- Categories end-->--}}
+
 	<!-- Intro section strat -->
 	<div class="intro-section">
 		<div class="container">
@@ -616,12 +568,11 @@
 					<p>We got you covered. No more hustle to get a room. Book at your own comfort anywhere, anytime <i class="fa fa-smile-o"></i></p>
 				</div>
 				<div class="col-md-2 col-sm-3 col-xs-12">
-					<a href="#" class="btn button-md button-theme hidden-xs">Contact now</a>
+					<a href="{{ route('user.contact') }}" class="btn button-md button-theme hidden-xs">Contact now</a>
 					<a href="#" class="btn button-sm button-theme hidden-lg hidden-md hidden-sm">Contact now</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<!-- Intro section end -->
-	@include('inc.footer')
 @endsection
