@@ -7,7 +7,7 @@
 					<a href="tel:1-8X0-666-8X88">
 						<i class="fa fa-phone"></i>10700 000 000</a>
 					<a href="tel:info@themevessel.com">
-						<i class="fa fa-envelope"></i>info@example.com</a>
+						<i class="fa fa-envelope"></i>info@unilink.com</a>
 				</div>
 			</div>
 			<div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
@@ -48,13 +48,13 @@
 						<a tabindex="0" href="{{ url('/') }}">Home</a>
 					</li>
 					<li>
-						<a tabindex="0" href="/properties-list-leftside.html">Properties</a>
+						<a tabindex="0" href="#">Hostels</a>
 					</li>
 					<li>
 						<a tabindex="0" href="{{ route('user.faq') }}">FAQs</a>
 					</li>
 					<li>
-						<a tabindex="0" href="/contact.html">Contact Us</a>
+						<a tabindex="0" href="{{ route('user.contact') }}">Contact Us</a>
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right rightside-navbar">
