@@ -51,6 +51,7 @@
 
 {{--content--}}
 @yield('content')
+@include('inc.footer')
 
 <script type="text/javascript" src="{{ asset('nest/js/jquery-2.2.0.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('nest/js/bootstrap.min.js') }}"></script>
