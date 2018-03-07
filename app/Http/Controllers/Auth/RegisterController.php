@@ -62,8 +62,10 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+    	// TODO replace the regNo with the actual data from the form
         return User::create([
             'name' => $data['name'],
+            'regNo' => '12345',
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
