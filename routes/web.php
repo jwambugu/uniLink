@@ -41,6 +41,11 @@ Route::get('/reset', [
 	'as' => 'user.reset'
 ]);
 
+// Show all hostels
+Route::get('/hostels', [
+	'uses' => 'PageController@getHostels',
+	'as' => 'user.hostels'
+]);
 
 /**
  * Here we have all the admins routes
