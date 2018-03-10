@@ -48,7 +48,7 @@
 						<a tabindex="0" href="{{ url('/') }}">Home</a>
 					</li>
 					<li>
-						<a tabindex="0" href="#">Hostels</a>
+						<a tabindex="0" href="{{ route('user.hostels') }}">Hostels</a>
 					</li>
 					<li>
 						<a tabindex="0" href="{{ route('user.faq') }}">FAQs</a>
