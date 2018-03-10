@@ -84,5 +84,13 @@ class PageController extends Controller
 	public function getReset(){
 		return view('auth.passwords.email');
 	}
+
+	/**
+	 * Show all the hostels for booking
+	 *
+	*/
+	public function getHostels(){
+		return view('user.hostels');
+	}
 }
 
