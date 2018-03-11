@@ -52,8 +52,9 @@
 {{--content--}}
 @yield('content')
 @include('inc.footer')
-
 <script type="text/javascript" src="{{ asset('nest/js/jquery-2.2.0.min.js') }}"></script>
+<script src="{{ asset('js/sweetalert.js') }}"></script>
+@include('sweet::alert')
 <script type="text/javascript" src="{{ asset('nest/js/bootstrap.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('nest/js/bootstrap-submenu.js') }}"></script>
 <script type="text/javascript" src="{{ asset('nest/js/rangeslider.js') }}"></script>
@@ -75,5 +76,6 @@
 <script type="text/javascript" src="{{ asset('nest/js/ie10-viewport-bug-workaround.js') }}"></script>
 <!-- Custom javascript -->
 <script type="text/javascript" src="{{ asset('nest/js/ie10-viewport-bug-workaround.js') }}"></script>
+@yield('scripts')
 </body>
 </html>
