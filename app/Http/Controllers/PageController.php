@@ -33,7 +33,7 @@ class PageController extends Controller
 	 * @return Request
 	 */
 	public function postLogin(Request $request){
-		
+		// Check if credentials match
 		if (!auth()->guard('admin')->attempt([
 			'username' => $request['username'],
 			'password' => $request['password']
@@ -51,9 +51,9 @@ class PageController extends Controller
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function userIndex(){
+		// Fetch the recently added and most booked
 		$popularHostels = Hostel::orderBy('bookedUnits', 'DESC')->with('images')->take(3)->get();
 		$recentHostels = Hostel::orderBy('created_at', 'DESC')->with('images')->take(4)->get();
-
 
 		return view('welcome',[
 			'popularHostels' => $popularHostels,
@@ -90,7 +90,31 @@ class PageController extends Controller
 	 *
 	*/
 	public function getHostels(){
-		return view('user.hostels');
+		// Fetch all hostels order by the most booked
+		$hostels = Hostel::orderBy('bookedUnits', 'DESC')->with('images', 'rooms')->paginate(9);
+
+		//return $hostels;
+		return view('user.hostels', [
+			'hostels' => $hostels
+		]);
 	}
+
+	/**
+	 * Show a hostel to be booked
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|Request|\Illuminate\View\View
+	 */
+	public function getBook($id){
+
+		// Find the hostel by id
+		$hostel = Hostel::where('id', $id)->with('images', 'rooms')->first();
+		$recentHostels = Hostel::orderBy('created_at', 'DESC')->with('images')->take(3)->get();
+
+		return view('user.book', [
+			'hostel' => $hostel,
+			'recentHostels' => $recentHostels
+		]);
+	}
+
 }
 
