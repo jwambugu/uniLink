@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\Http\Controllers\Controller;
+use App\UserContact;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 
@@ -63,11 +64,20 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
     	// TODO replace the regNo with the actual data from the form
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
-            'regNo' => '12345',
+            'regNo' => '123456',
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
+
+        // Add contact details
+	    UserContact::create([
+	    	'user_id' => $user->id,
+		    'phoneNumber' => '0700123456',
+		    'creditCard' => '123443211234'
+	    ]);
+
+	    return $user;
     }
 }
