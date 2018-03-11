@@ -71,4 +71,11 @@ class AnalysisController extends Controller
 
 	    return $hostels;
     }
+
+    /**
+     * Get the user contact
+    */
+    public static function getContact(){
+    	return User::find(auth()->user()->id)->contact;
+    }
 }
