@@ -5,7 +5,7 @@
 @include('inc.header')
 <!-- Top header end -->
 <!-- Content area start -->
-<div class="content-area">
+<div class="content-area login-box-top">
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-12">
