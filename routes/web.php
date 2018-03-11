@@ -14,7 +14,10 @@
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [
+	'uses' => 'HomeController@index',
+	'as' => 'home'
+]);
 
 /**
  * All the users routes start here
@@ -45,6 +48,30 @@ Route::get('/reset', [
 Route::get('/hostels', [
 	'uses' => 'PageController@getHostels',
 	'as' => 'user.hostels'
+]);
+
+// Show a hostel to be booked
+Route::get('book/{id}', [
+	'uses' => 'PageController@getBook',
+	'as' => 'user.getBook'
+]);
+
+// Book a hostel
+Route::get('/booking/{id}', [
+	'uses' => 'HomeController@getHostelToBook',
+	'as' => 'user.book'
+]);
+
+// Show the profile page
+Route::get('/profile', [
+	'uses' => 'HomeController@getProfile',
+	'as' => 'user.profile'
+]);
+
+// Update user profile
+Route::post('/profile', [
+	'uses' => 'HomeController@updateProfile',
+	'as' => 'user.profile'
 ]);
 
 /**
