@@ -243,7 +243,7 @@
 									<div class="property-tag button sale">{{ $hostel->totalRooms - $hostel->bookedUnits }} Remaining Rooms </div>
 									<div class="property-price">KES {{ number_format($hostel->price) }}</div>
 
-									<img src="/storage/hostel_images/{{ $hostel->images->first()->image }}" alt="properties-1" class="img-responsive">
+									<img src="{{ asset('/storage/hostel_images') }}/{{ $hostel->images->first()->image }}" alt="properties-1" class="img-responsive">
 
 
 
@@ -424,7 +424,7 @@
 											<div class="property-tag button sale">{{ $recentHostel->totalRooms - $recentHostel->bookedUnits }} Remaining Rooms </div>
 											<div class="property-price">KES {{ number_format($recentHostel->price) }}</div>
 
-											<img src="/storage/hostel_images/{{ $recentHostel->images->first()->image }}" alt="properties-1" class="img-responsive">
+											<img src="{{ asset('/storage/hostel_images/') }}/{{ $recentHostel->images->first()->image }}" alt="properties-1" class="img-responsive">
 
 
 
