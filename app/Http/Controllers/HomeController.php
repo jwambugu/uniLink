@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Hostel;
 use App\User;
 use App\UserContact;
 use Illuminate\Http\Request;
@@ -30,13 +31,24 @@ class HomeController extends Controller
     }
 
 	/**
+	 * Show the checkout page
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+    public function getCheckout(){
+    	return view('user.checkout');
+    }
+
+	/**
 	 * Here a user books a hostel
 	 * @param $id
 	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function getHostelToBook($id){
-		return $id;
-		return redirect()->intended();
+		$hostel = Hostel::where('id', $id)->with('images')->first();
+
+		return view('user.checkout', [
+			'hostel' => $hostel
+		]);
 	}
 
 	/**
