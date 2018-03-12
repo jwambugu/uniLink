@@ -74,6 +74,12 @@ Route::post('/profile', [
 	'as' => 'user.profile'
 ]);
 
+// Get the password change page
+Route::get('/password', [
+	'uses' => 'HomeController@getPassword',
+	'as' => 'user.password'
+]);
+
 /**
  * Here we have all the admins routes
  * @prefix admin
