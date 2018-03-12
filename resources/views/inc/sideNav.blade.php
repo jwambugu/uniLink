@@ -35,7 +35,7 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
+				<a href="{{ route('user.password') }}">
 					<i class="flaticon-security"></i>Change Password
 				</a>
 			</li>
