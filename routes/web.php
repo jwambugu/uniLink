@@ -80,6 +80,12 @@ Route::get('/password', [
 	'as' => 'user.password'
 ]);
 
+// Update password
+Route::post('/password', [
+	'uses' => 'HomeController@updatePassword',
+	'as' => 'user.password'
+]);
+
 /**
  * Here we have all the admins routes
  * @prefix admin
