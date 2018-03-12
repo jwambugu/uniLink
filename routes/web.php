@@ -57,7 +57,7 @@ Route::get('book/{id}', [
 ]);
 
 // Book a hostel
-Route::get('/booking/{id}', [
+Route::get('/checkout/{id}', [
 	'uses' => 'HomeController@getHostelToBook',
 	'as' => 'user.book'
 ]);
@@ -84,6 +84,12 @@ Route::get('/password', [
 Route::post('/password', [
 	'uses' => 'HomeController@updatePassword',
 	'as' => 'user.password'
+]);
+
+// Check out page
+Route::get('/checkout', [
+	'uses' => 'HomeController@getCheckout',
+	'as' => 'user.checkout'
 ]);
 
 /**
