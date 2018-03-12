@@ -61,7 +61,7 @@
 									</h1>
 									<!-- Property address -->
 									<h3 class="property-address">
-										<a href="#">
+										<a href="{{ url('/book') }}/{{ $hostel->id }}">
 											<i class="fa fa-phone"></i> {{ $hostel->contact }}
 										</a>
 									</h3>

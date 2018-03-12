@@ -19,7 +19,7 @@
 						<div class="pull-right">
 							<h3><span>KES {{ number_format($hostel->price) }} per semester</span></h3>
 							<h5>
-								<a href="{{ url('/booking') }}/{{ $hostel->id }}" class="btn btn-success pull-right">Book Now</a>
+								<a href="{{ url('/checkout') }}/{{ $hostel->id }}" class="btn btn-success pull-right">Book Now</a>
 							</h5>
 						</div>
 					</div>
@@ -450,7 +450,7 @@
 			};
 			map = new google.maps.Map(document.getElementById('map'), {
 				center: hostel,
-				zoom: 15
+				zoom: 17
 			});
 
 			let marker = new google.maps.Marker({

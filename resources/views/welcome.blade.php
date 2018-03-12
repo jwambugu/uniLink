@@ -12,7 +12,7 @@
 					<img src="{{ asset('nest/img/banner/banner-slider-1.jpg') }}" alt="banner-slider-1">
 					<div class="carousel-caption banner-slider-inner banner-top-align text-left">
 						<h1 class="hidden-lg hidden-md">Find the
-							<br> perfect home</h1>
+							<br> perfect hostel</h1>
 						<a href="#" class="btn button-md button-theme hidden-lg hidden-md">Learn More</a>
 						<div class="banner-search-box hidden-xs hidden-sm">
 							<!-- Search area start -->
@@ -238,7 +238,7 @@
 						<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1, 2, 3">
 							<div class="property">
 								<!-- Property img -->
-								<a href="properties-details.html" class="property-img">
+								<a href="{{ url('/book') }}/{{ $hostel->id }}" class="property-img">
 									<div class="property-tag button alt featured">Book Now</div>
 									<div class="property-tag button sale">{{ $hostel->totalRooms - $hostel->bookedUnits }} Remaining Rooms </div>
 									<div class="property-price">KES {{ number_format($hostel->price) }}</div>
@@ -252,11 +252,11 @@
 								<div class="property-content">
 									<!-- title -->
 									<h1 class="title">
-										<a href="properties-details.html">{{ $hostel->name }}</a>
+										<a href="{{ url('/book') }}/{{ $hostel->id }}">{{ $hostel->name }}</a>
 									</h1>
 									<!-- Property address -->
 									<h3 class="property-address">
-										<a href="properties-details.html">
+										<a href="{{ url('/book') }}/{{ $hostel->id }}">
 											<i class="fa fa-phone"></i> {{ $hostel->contact }}
 										</a>
 									</h3>
@@ -280,7 +280,7 @@
                                     <span class="left">
                                         <i class="fa fa-hashtag"></i> {{ $hostel->bookedUnits }} Booked </span>
 										<span class="right">
-                                        <a href="#">
+                                        <a href="{{ url('/book') }}/{{ $hostel->id }}">
 	                                        Book Now <i class="fa fa-key"></i>
                                         </a>
                                     </span>
@@ -419,7 +419,7 @@
 								<div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
 									<div class="property">
 										<!-- Property img -->
-										<a href="properties-details.html" class="property-img">
+										<a href="{{ url('/book') }}/{{ $recentHostel->id }}" class="property-img">
 											<div class="property-tag button alt featured">Book Now</div>
 											<div class="property-tag button sale">{{ $recentHostel->totalRooms - $recentHostel->bookedUnits }} Remaining Rooms </div>
 											<div class="property-price">KES {{ number_format($recentHostel->price) }}</div>
@@ -433,11 +433,11 @@
 										<div class="property-content">
 											<!-- title -->
 											<h1 class="title">
-												<a href="properties-details.html">{{ $recentHostel->name }}</a>
+												<a href="{{ url('/book') }}/{{ $recentHostel->id }}">{{ $recentHostel->name }}</a>
 											</h1>
 											<!-- Property address -->
 											<h3 class="property-address">
-												<a href="properties-details.html">
+												<a href="{{ url('/book') }}/{{ $recentHostel->id }}">
 													<i class="fa fa-phone"></i> {{ $recentHostel->contact }}
 												</a>
 											</h3>
@@ -457,7 +457,7 @@
                                     <span class="left">
                                         <i class="fa fa-hashtag"></i> {{ $recentHostel->bookedUnits }} Booked </span>
 												<span class="right">
-                                        <a href="#">
+                                        <a href="{{ url('/book') }}/{{ $recentHostel->id }}">
 	                                        Book Now <i class="fa fa-key"></i>
                                         </a>
                                     </span>

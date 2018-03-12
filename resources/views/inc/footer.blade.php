@@ -96,7 +96,7 @@
 								<a href="{{ route('user.welcome') }}">Home</a>
 							</li>
 							<li>
-								<a href="{{ route('user.contact') }}">Hostels</a>
+								<a href="{{ route('user.hostels') }}">Hostels</a>
 							</li>
 							<li>
 								<a href="{{ route('user.faq') }}">Faqs</a>
@@ -113,13 +113,13 @@
 						<div class="main-title-2">
 							<h1>Popular Hostels</h1>
 						</div>
-						<div class="media">
-							<div class="media-left">
+						<div class="media text-primary">
+							<div class="media-left ">
 								<img class="media-object" src="{{ asset('nest/img/properties/small-properties-1.jpg') }}" alt="small-properties-1">
 							</div>
-							<div class="media-body">
+							<div class="media-body text-primary">
 								<h3 class="media-heading">
-									<a href="#">The Unknown</a>
+									<a href="{{ url('/book/1') }}">The Unknown</a>
 								</h3>
 								<p>0750 123 455</p>
 								<div class="comments-icon">
@@ -127,13 +127,13 @@
 								</div>
 							</div>
 						</div>
-						<div class="media">
+						<div class="media text-primary">
 							<div class="media-left">
 								<img class="media-object" src="{{ asset('nest/img/properties/small-properties-2.jpg') }}" alt="small-properties-2">
 							</div>
-							<div class="media-body">
+							<div class="media-body text-primary">
 								<h3 class="media-heading">
-									<a href="#">The Hub</a>
+									<a href="{{ url('/book/1') }}">The Hub</a>
 								</h3>
 								<p>0750 321 455</p>
 								<div class="comments-icon">
@@ -141,16 +141,16 @@
 								</div>
 							</div>
 						</div>
-						<div class="media">
+						<div class="media text-primary">
 							<div class="media-left">
 								<img class="media-object" src="{{ asset('nest/img/properties/small-properties-3.jpg') }}" alt="small-properties-3">
 							</div>
-							<div class="media-body">
+							<div class="media-body text-primary">
 								<h3 class="media-heading">
-									<a href="#">Rayne's</a>
+									<a href="{{ url('/book/1') }}">Rayne's</a>
 								</h3>
 								<p>0750 321 655</p>
-								<div class="comments-icon">
+								<div class="comments-icon text-primary">
 									<i class="fa fa-comments"></i>KES {{ number_format('9000') }}
 								</div>
 							</div>
