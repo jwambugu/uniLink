@@ -18,7 +18,7 @@ class PageController extends Controller
 	{
 		$this->middleware('guest');
 	}
-	
+
 	/**
 	 * Show the admin login page
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
@@ -26,7 +26,7 @@ class PageController extends Controller
 	public function getLogin(){
 		return view('admin.login');
 	}
-	
+
 	/**
 	 * Authenticate the admin
 	 * @param Request $request
@@ -39,10 +39,10 @@ class PageController extends Controller
 			'password' => $request['password']
 		])){
 			alert()->error('Sorry. These credentials do not match our records.', 'Wrong Credentials');
-			
+
 			return redirect()->back();
 		}
-		
+
 		return redirect()->route('admin.home');
 	}
 
@@ -88,7 +88,7 @@ class PageController extends Controller
 	/**
 	 * Show all the hostels for booking
 	 *
-	*/
+	 */
 	public function getHostels(){
 		// Fetch all hostels order by the most booked
 		$hostels = Hostel::orderBy('bookedUnits', 'DESC')->with('images', 'rooms')->paginate(9);
