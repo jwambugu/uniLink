@@ -3,10 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Hostel;
+use App\Payment;
 use App\User;
 use App\UserContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
+use Stripe\Charge;
+use Stripe\Customer;
+use Stripe\Stripe;
 
 class HomeController extends Controller
 {
@@ -27,7 +32,18 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+    	$myHostels = Payment::where('user_id', auth()->user()->id)->with('user', 'hostel')->get();
+    	$images = [];
+
+    	foreach ($myHostels as $hostel){
+    		$hostelID = $hostel->hostel->id;
+
+		    $images[] = Hostel::find($hostelID)->images->first();
+	    }
+        return view('home', [
+        	'myHostels' => $myHostels,
+	        'images' => $images
+        ]);
     }
 
 	/**
@@ -111,11 +127,11 @@ class HomeController extends Controller
 	 */
 	public function updatePassword(Request $request){
 		// Validate the request
-//		$this->validate($request, [
-//			'currentPassword' => 'required|min:6',
-//			'newPassword' => 'required|min:6',
-//			'confirmPassword' => 'required|min:6',
-//		]);
+		$this->validate($request, [
+			'currentPassword' => 'required|min:6',
+			'newPassword' => 'required|min:6',
+			'confirmPassword' => 'required|min:6',
+		]);
 
 		// Check if current password matches the sent password
 		if(!Hash::check($request['currentPassword'], auth()->user()->password)){
@@ -143,6 +159,98 @@ class HomeController extends Controller
 		alert()->success('The password has been successfully  updated.', 'Passwords Changed')->autoclose(3000);
 
 		return redirect()->route('home');
+	}
 
+	/**
+	 * Process the payment
+	 * @param Request $request
+	 * @return string
+	 */
+	public function postCheckout(Request $request){
+
+		try{
+			Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
+
+			$customer  = Customer::create([
+				'email' => $request->stripeEmail,
+				'source' => $request->stripeToken
+			]);
+
+			$charge =  Charge::create([
+				'customer' => $customer->id,
+				'amount' => $request->amount,
+				'currency' => env('STRIPE_CURRENCY')
+			]);
+
+			// Variables used for reference
+			$stripeID = $charge->id;
+			$amount = ($charge->amount) / 100;
+			$userID = auth()->user()->id;
+			$hostelID = $request->hostelID;
+
+			// Log the payment info
+			Log::useDailyFiles(storage_path().'/logs/payment.log');
+			Log::info([auth()->user()->email => [
+				'ip' => $request->ip(),
+				'stripeID' => $stripeID,
+				'amount' => $amount,
+				'userID' => $userID,
+				'hostelID' => $hostelID
+			]]);
+
+			// Add data to the payments table
+			Payment::create([
+				'stripeID' => $charge->id,
+				'amount' => $amount,
+				'user_id' => $userID,
+				'hostel_id' => $hostelID
+			]);
+
+			// Increment the count of booked units
+			$this->bookedIncrement($hostelID);
+
+			alert()->success('Hostel successfully booked.', 'Booking Complete')->persistent('Got It');
+
+			return redirect()->route('home');
+
+		} catch (\Exception $exception){
+			Log::useDailyFiles(storage_path().'/logs/payment-error.log');
+			Log::error([auth()->user()->email => [
+				'ip' => $request->ip(),
+				'message' => $exception->getMessage()
+			]]);
+			return $exception->getMessage();
+		}
+	}
+
+	/**
+	 * Increment the count of booked units
+	 * @param $id
+	 * @return null
+	 */
+	public function bookedIncrement($id){
+		// Find the hostel by id
+		$hostel = Hostel::find($id);
+
+		$hostel->bookedUnits = $hostel->bookedUnits + 1;
+
+		$hostel->update();
+
+		return null;
+	}
+
+	/**
+	 * View booked hostel
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function viewBookedHostel($id)
+	{
+		// Find the hostel by id
+		$hostel = Hostel::where('id', $id)->with('images', 'rooms')->first();
+
+		return view('user.view', [
+			'hostel' => $hostel
+		]);
 	}
 }
