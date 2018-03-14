@@ -68,7 +68,21 @@
 									</ul>
 									<hr>
 									<!-- btn -->
-									<a href="#" class="btn button-sm button-theme pull-right">Book Now</a>
+									<form action="{{ route('user.charge') }}" method="POST">
+										{{ csrf_field() }}
+										<input type="hidden" name="amount" value="{{ $hostel->price * 100 }}">
+										<input type="hidden" name="hostelID" value="{{ $hostel->id }}">
+										<script
+												src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+												data-key="{{ env('STRIPE_PUBLISHABLE_KEY') }}"
+												data-amount="{{ $hostel->price * 100 }}"
+												data-name="UniLink"
+												data-description="Widget"
+												data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+												data-locale="auto"
+												data-currency="{{ env('STRIPE_CURRENCY') }}">
+										</script>
+									</form>
 								</div>
 							</div>
 							<!-- Agent box list end -->
@@ -80,5 +94,13 @@
 	</div>
 @endsection
 @section('scripts')
-
+	{{--<script--}}
+			{{--src="https://checkout.stripe.com/checkout.js" class="stripe-button"--}}
+			{{--data-key="{{ env('STRIPE_KEY') }}"--}}
+			{{--data-amount="999"--}}
+			{{--data-name="UniLink"--}}
+			{{--data-description="Widget"--}}
+			{{--data-image="https://stripe.com/img/documentation/checkout/marketplace.png"--}}
+			{{--data-locale="auto">--}}
+	{{--</script>--}}
 @endsection
