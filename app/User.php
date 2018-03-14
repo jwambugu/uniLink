@@ -27,8 +27,29 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    // Defining the relationship to the contacts table
+	/**
+	 * Here we define the relationship between this model
+	 * & the contact model
+	 */
 	public function contact(){
 		return $this->hasOne('App\UserContact');
+	}
+
+	/**
+	 * Here we define the relationship between this model
+	 * & the hostel model
+	 * @return \Illuminate\Database\Eloquent\Relations\HasOne
+	 */
+	public function hostel(){
+		return $this->hasOne('App\Hostel');
+	}
+
+	/**
+	 * Here we define the relationship between this model
+	 * & the payment model
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function payment(){
+		return $this->belongsTo('App\Payment');
 	}
 }

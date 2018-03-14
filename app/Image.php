@@ -14,11 +14,12 @@ class Image extends Model
 	protected $fillable = [
 		'hostel_id', 'image'
 	];
-	
+
 	/**
 	 * Here we have the images relationship with a hostel
-	*/
-	public function hostelImage(){
-		$this->belongsTo('App\Hostel');
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
+	public function hostel(){
+		return $this->belongsTo('App\Hostel');
 	}
 }

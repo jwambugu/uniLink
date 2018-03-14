@@ -14,11 +14,12 @@ class Room extends Model
 	protected $fillable = [
 		'hostel_id', 'roomType', 'roomCategory', 'electricityBill', 'waterBill'
 	];
-	
+
 	/**
 	 * Here we have the rooms relationship with a hostel
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
-	public function hostelRooms(){
-		$this->belongsTo('App\Hostel');
+	public function hostel(){
+		return $this->belongsTo('App\Hostel');
 	}
 }

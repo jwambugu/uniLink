@@ -15,7 +15,11 @@ class UserContact extends Model
 		'user_id', 'phoneNumber', 'creditCard'
 	];
 
-	// Define the relationship to the user
+	/**
+	 * Here we define the relationship between this model
+	 * & the user model
+	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 */
 	public function user(){
 		return $this->belongsTo('App\User');
 	}
