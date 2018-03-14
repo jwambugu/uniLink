@@ -62,11 +62,12 @@
 					</ul>
 					<ul class="nav navbar-nav navbar-right rightside-navbar">
 						<li>
-							<form class="form-inline form-search" method="GET">
+							<form action="{{ route('user.basicSearch') }}" class="form-inline form-search" method="post">
 								<div class="form-group">
-									<label class="sr-only" for="textsearch2">Search</label>
-									<input type="text" class="form-control" id="textsearch2" placeholder="Search">
+									<label class="sr-only" for="search">Search</label>
+									<input type="search" class="form-control" id="search" name="search" placeholder="Search">
 								</div>
+								{{ csrf_field() }}
 								<button type="submit" class="btn"><i class="fa fa-search"></i></button>
 							</form>
 						</li>
