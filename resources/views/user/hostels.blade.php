@@ -1,6 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
+	@include('inc.navbar')
 	<!-- Featured properties start -->
 	<div class="content-area-book featured-properties">
 		<div class="container">
@@ -23,15 +24,23 @@
 								</h4>
 							</div>
 							<div class="col-lg-6 col-md-6 col-sm-6 col-xs-10 cod-pad">
-								<div class="sorting-options">
-									<select class="sorting">
-										<option>New To Old</option>
-										<option>Old To New</option>
-										<option>Properties (High To Low)</option>
-										<option>Properties (Low To High)</option>
-									</select>
-									<a href="#" class="change-view-btn"><i class="fa fa-th-list"></i></a>
-									<a href="#" class="change-view-btn active-view-btn"><i class="fa fa-th-large"></i></a>
+								<div class="row pull-right">
+									<div class="col-lg-3">
+										<h5>Filter</h5>
+									</div>
+									<div class="col-lg-3">
+										<form action="{{ route('user.amountASC') }}" method="post">
+											{{ csrf_field() }}
+											<button class="change-view-btn" data-toggle="tooltip" data-placement="top" title="Price ASC"><i class="fa fa-sort-amount-asc"></i></button>
+										</form>
+									</div>
+									<div class="col-lg-1"></div>
+									<div class="col-lg-3">
+										<form action="{{ route('user.amountDESC') }}" method="post">
+											{{ csrf_field() }}
+											<button class="change-view-btn active-view-btn" data-toggle="tooltip" data-placement="top" title="Price DESC"><i class="fa fa-sort-amount-desc"></i></button>
+										</form>
+									</div>
 								</div>
 							</div>
 						</div>
