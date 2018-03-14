@@ -25,16 +25,6 @@
 				</a>
 			</li>
 			<li>
-				<a href="#">
-					<i class="fa fa-heart"></i>Favorited Properties
-				</a>
-			</li>
-			<li>
-				<a href="#">
-					<i class="fa fa-plus"></i>Submit New Property
-				</a>
-			</li>
-			<li>
 				<a href="{{ route('user.password') }}">
 					<i class="flaticon-security"></i>Change Password
 				</a>
