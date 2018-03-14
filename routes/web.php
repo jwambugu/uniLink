@@ -86,11 +86,31 @@ Route::post('/password', [
 	'as' => 'user.password'
 ]);
 
-// Check out page
-Route::get('/checkout', [
-	'uses' => 'HomeController@getCheckout',
-	'as' => 'user.checkout'
+// View a booked hostel
+Route::get('/view/{id}', [
+	'uses' => 'HomeController@viewBookedHostel',
+	'as' => 'user.view'
 ]);
+
+
+// Process the payment
+Route::post('/charge', [
+	'uses' => 'HomeController@postCheckout',
+	'as' => 'user.charge'
+]);
+
+// Filter hostels by price ASC
+Route::post('/asc', [
+	'uses' => 'PageController@sortByAmountASC',
+	'as' => 'user.amountASC'
+]);
+
+// Filter hostels by price DESC
+Route::post('/desc', [
+	'uses' => 'PageController@sortByAmountDESC',
+	'as' => 'user.amountDESC'
+]);
+
 
 /**
  * Here we have all the admins routes
