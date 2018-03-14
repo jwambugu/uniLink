@@ -116,5 +116,32 @@ class PageController extends Controller
 		]);
 	}
 
+	/**
+	 * Sort hostels by price ASC
+	*/
+	public function sortByAmountASC(){
+		// Fetch all hostels order by the price asc
+		$hostels = Hostel::orderBy('price', 'asc')->with('images', 'rooms')->paginate(9);
+
+		//return $hostels;
+		return view('user.hostels', [
+			'hostels' => $hostels
+		]);
+	}
+
+	/**
+	 * Sort hostels by price DESC
+	 */
+	public function sortByAmountDESC(){
+		// Fetch all hostels order by the price asc
+		$hostels = Hostel::orderBy('price', 'desc')->with('images', 'rooms')->paginate(9);
+
+		//return $hostels;
+		return view('user.hostels', [
+			'hostels' => $hostels
+		]);
+	}
+
+
 }
 
