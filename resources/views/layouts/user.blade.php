@@ -76,6 +76,11 @@
 <script type="text/javascript" src="{{ asset('nest/js/ie10-viewport-bug-workaround.js') }}"></script>
 <!-- Custom javascript -->
 <script type="text/javascript" src="{{ asset('nest/js/ie10-viewport-bug-workaround.js') }}"></script>
+<script>
+	$(function () {
+		$('[data-toggle="tooltip"]').tooltip()
+	})
+</script>
 @yield('scripts')
 </body>
 </html>
