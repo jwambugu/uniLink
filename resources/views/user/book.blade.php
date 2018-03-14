@@ -439,8 +439,6 @@
 	<script>
 		let map;
 		function initMap() {
-			//lat: -0.3211,
-			// lng: 37.6568
 			let latitude = {!! $hostel->latitude !!};
 			let longitude = {{ $hostel->longitude }};
 
@@ -459,6 +457,5 @@
 			});
 		}
 	</script>
-	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCg4OlHqJizgas6fsATdn868ZYDQcWLXD4&callback=initMap"
-	        async defer></script>
+	<script src="https://maps.googleapis.com/maps/api/js?key={{ env('GOOGLE_MAPS_KEY') }}&callback=initMap" async defer></script>
 @endsection
