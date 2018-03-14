@@ -111,6 +111,12 @@ Route::post('/desc', [
 	'as' => 'user.amountDESC'
 ]);
 
+// Basic search
+Route::post('/search', [
+	'uses' => 'PageController@basicSearch',
+	'as' => 'user.basicSearch'
+]);
+
 
 /**
  * Here we have all the admins routes
