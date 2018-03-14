@@ -142,6 +142,28 @@ class PageController extends Controller
 		]);
 	}
 
+	/**
+	 * The basic search for hostels
+	 * @param Request $request
+	 * @return Request
+	 */
+	public function basicSearch(Request $request){
+		$search = $request['search'];
+
+		$hostels = Hostel::where('ownerID', 'like', '%'.$search.'%')
+			->orWhere('name', 'like', '%'.$search.'%')
+			->orWhere('description', 'like', '%'.$search.'%')
+			->orWhere('totalRooms', 'like', '%'.$search.'%')
+			->orWhere('price', 'like', '%'.$search.'%')
+			->orWhere('contact', 'like', '%'.$search.'%')
+			->orWhere('price', 'like', '%'.$search.'%')
+			->with('images')
+			->paginate(6);
+
+		return view('user.basicSearch', [
+			'hostels' => $hostels
+		]);
+	}
 
 }
 
