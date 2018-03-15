@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Admin;
 use App\Hostel;
+use App\Room;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -51,6 +52,7 @@ class PageController extends Controller
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function userIndex(){
+
 		// Fetch the recently added and most booked
 		$popularHostels = Hostel::orderBy('bookedUnits', 'DESC')->with('images')->take(3)->get();
 		$recentHostels = Hostel::orderBy('created_at', 'DESC')->with('images')->take(4)->get();
@@ -163,6 +165,30 @@ class PageController extends Controller
 		return view('user.basicSearch', [
 			'hostels' => $hostels
 		]);
+	}
+
+	/**
+	 * The advanced search for hostels
+	 * @param Request $request
+	 * @return Request
+	 */
+	public function advancedSearch(Request $request){
+
+		// Find the requested hostel
+		return $hostels = Hostel::where('price', 'like', '%'.$request['price'].'%')
+			->orWhere('deposit', 'like', '%'.$request['deposit'].'%')
+			->with([
+				'rooms' => function($query){
+					$query->where('roomType', 'like', '%'.\request('roomType').'%');
+				}
+			])
+			->get();
+
+		return $rooms = Room::where('roomType', 'like', '%'.$request['roomType'].'%')
+			->where('roomCategory', 'like', '%'.$request['roomCategory'].'%')
+			->where('electricityBill', 'like', '%'.$request['electricityBill'].'%')
+			->where('waterBill', 'like', '%'.$request['waterBill'].'%')
+			->get();
 	}
 
 }
