@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Alert;
 use App\Hostel;
 use App\Image;
+use App\Payment;
 use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -31,12 +32,14 @@ class AdminController extends Controller
 		$bookedUnits = AnalysisController::getBookedUnitsCount();
 		$totalRooms = AnalysisController::getTotalUnitsCount();
 		$hostels = AnalysisController::mostPopularHostels();
+		$totalPaidAmount = AnalysisController::totalPaidAmount();
 		
 		return view('admin.home',[
 			'users' => $users,
 			'bookedUnits' => $bookedUnits,
 			'totalRooms' => $totalRooms,
-			'hostels' => $hostels
+			'hostels' => $hostels,
+			'totalPaidAmount' => $totalPaidAmount
 		]);
 	}
 	
