@@ -174,6 +174,7 @@ class PageController extends Controller
 	 */
 	public function advancedSearch(Request $request){
 
+		// TODO fix the advanced search
 		// Find the requested hostel
 		return $hostels = Hostel::where('price', 'like', '%'.$request['price'].'%')
 			->orWhere('deposit', 'like', '%'.$request['deposit'].'%')
