@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hostel;
+use App\Payment;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -23,9 +24,7 @@ class AnalysisController extends Controller
 	 * @return int
 	 */
 	public static function getUsersCount(){
-		$users = count(User::all());
-		
-		return $users;
+		return $users = count(User::all());
 	}
 	
 	/**
@@ -45,11 +44,7 @@ class AnalysisController extends Controller
      * @return int
      */
 	public static function getTotalUnitsCount(){
-
-		$totalRooms =  Hostel::all()->sum('totalRooms');
-
-		return $totalRooms;
-		
+		return $totalRooms =  Hostel::all()->sum('totalRooms');
 	}
 	
 	/**
@@ -57,9 +52,7 @@ class AnalysisController extends Controller
 	 * @return array
 	 */
 	public static function mostPopularHostels(){
-		$hostels = Hostel::orderBy('bookedUnits', 'DESC')->take(4)->get();
-		
-		return $hostels;
+		return $hostels = Hostel::orderBy('bookedUnits', 'DESC')->take(4)->get();
 	}
 
     /**
@@ -67,9 +60,7 @@ class AnalysisController extends Controller
      * @return array
      */
 	public static function manageHostels(){
-	    $hostels = Hostel::orderBy('created_at', 'DESC')->paginate(10);
-
-	    return $hostels;
+	    return $hostels = Hostel::orderBy('created_at', 'DESC')->paginate(10);
     }
 
     /**
@@ -77,5 +68,12 @@ class AnalysisController extends Controller
     */
     public static function getContact(){
     	return User::find(auth()->user()->id)->contact;
+    }
+
+    /**
+     * Get the total amount paid
+    */
+    public static function totalPaidAmount(){
+	    return $payment = Payment::all();
     }
 }
