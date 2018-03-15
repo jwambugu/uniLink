@@ -117,6 +117,12 @@ Route::post('/search', [
 	'as' => 'user.basicSearch'
 ]);
 
+// Advanced search
+Route::post('/advanced', [
+	'uses' => 'PageController@advancedSearch',
+	'as' => 'user.advancedSearch'
+]);
+
 
 /**
  * Here we have all the admins routes
