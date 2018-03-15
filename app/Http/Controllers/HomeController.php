@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Hostel;
 use App\Payment;
 use App\User;
-use App\UserContact;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
