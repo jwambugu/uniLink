@@ -19,92 +19,76 @@
 							<div class="search-area">
 								<div class="search-area-inner">
 									<div class="search-contents ">
-										<form method="post">
+										<form action="{{ route('user.advancedSearch') }}" method="post">
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 												<div class="form-group">
-													<select class="selectpicker search-fields" name="area-from" data-live-search="true" data-live-search-placeholder="Search value">
-														<option>Area From</option>
-														<option>1000</option>
-														<option>800</option>
-														<option>600</option>
-														<option>400</option>
-														<option>200</option>
-														<option>100</option>
+													<select class="selectpicker search-fields" name="price" data-live-search="true" data-live-search-placeholder="Search value">
+														<option>Price From</option>
+														<option value="5000">{{ number_format('5000') }}</option>
+														<option value="10000">{{ number_format('10000') }}</option>
+														<option value="12000">{{ number_format('12000') }}</option>
+														<option value="15000">{{ number_format('15000') }}</option>
+														<option value="20000">{{ number_format('20000') }} +</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 												<div class="form-group">
-													<select class="selectpicker search-fields" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">
-														<option>Property Status</option>
-														<option>For Sale</option>
-														<option>For Rent</option>
+													<select class="selectpicker search-fields" name="deposit" data-live-search="true" data-live-search-placeholder="Search value">
+														<option>Deposit From</option>
+														<option value="5000">{{ number_format('5000') }}</option>
+														<option value="6000">{{ number_format('6000') }}</option>
+														<option value="7000">{{ number_format('7000') }}</option>
+														<option value="9000">{{ number_format('9000') }}</option>
+														<option value="10000">{{ number_format('10000') }} +</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 												<div class="form-group">
-													<select class="selectpicker search-fields" name="location" data-live-search="true" data-live-search-placeholder="Search value">
-														<option>Location</option>
-														<option>United States</option>
-														<option>United Kingdom</option>
-														<option>American Samoa</option>
-														<option>Belgium</option>
-														<option>Cameroon</option>
-														<option>Canada</option>
+													<select class="selectpicker search-fields" name="roomType" data-live-search="true" data-live-search-placeholder="Search value">
+														<option>Room Type</option>
+														<option value="single">Single Room</option>
+														<option value="double">Doubles</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 												<div class="form-group">
-													<select class="selectpicker search-fields" name="property-types" data-live-search="true" data-live-search-placeholder="Search value">
-														<option>Property Types</option>
-														<option>Residential</option>
-														<option>Commercial</option>
-														<option>Land</option>
+													<select class="selectpicker search-fields" name="roomCategory" data-live-search="true" data-live-search-placeholder="Search value">
+														<option>Room Category</option>
+														<option value="single">Single Room</option>
+														<option value="bedsitter">Bed Sitter</option>
+														<option value="others">Others</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 												<div class="form-group">
-													<select class="selectpicker search-fields" name="bedrooms" data-live-search="true" data-live-search-placeholder="Search value">
-														<option>Bedrooms</option>
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-														<option>6</option>
-														<option>7</option>
+													<select class="selectpicker search-fields" name="electricityBill" data-live-search="true" data-live-search-placeholder="Search value">
+														<option>Electricity Bill Payment</option>
+														<option value="student">Paid by the student</option>
+														<option value="landlord">Paid by the landlord</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 												<div class="form-group">
-													<select class="selectpicker search-fields" name="bathrooms" data-live-search="true" data-live-search-placeholder="Search value">
-														<option>Bathrooms</option>
-														<option>1</option>
-														<option>2</option>
-														<option>3</option>
-														<option>4</option>
-														<option>5</option>
-														<option>6</option>
-														<option>7</option>
+													<select class="selectpicker search-fields" name="waterBill" data-live-search="true" data-live-search-placeholder="Search value">
+														<option>Water Bill Payment</option>
+														<option value="student">Paid by the student</option>
+														<option value="landlord">Paid by the landlord</option>
 													</select>
 												</div>
 											</div>
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 												<div class="form-group">
-													<div class="range-slider">
-														<div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider"
-														     aria-disabled="false"></div>
-														<div class="clearfix"></div>
-													</div>
 												</div>
 											</div>
+											{{ csrf_field() }}
 											<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 ">
 												<div class="form-group">
-													<button class="search-button">Search</button>
+													<button type="submit" class="search-button">Search</button>
 												</div>
 											</div>
 										</form>
@@ -120,109 +104,109 @@
 	</div>
 	<!-- Banner end -->
 
-	<!-- Search area start -->
-	<div class="search-area hidden-lg hidden-md">
-		<div class="container">
-			<div class="search-area-inner">
-				<div class="search-contents ">
-					<form method="GET">
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="area-from" data-live-search="true" data-live-search-placeholder="Search value">
-										<option>Area From</option>
-										<option>1000</option>
-										<option>800</option>
-										<option>600</option>
-										<option>400</option>
-										<option>200</option>
-										<option>100</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">
-										<option>Property Status</option>
-										<option>For Sale</option>
-										<option>For Rent</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="location" data-live-search="true" data-live-search-placeholder="Search value">
-										<option>Location</option>
-										<option>United States</option>
-										<option>United Kingdom</option>
-										<option>American Samoa</option>
-										<option>Belgium</option>
-										<option>Cameroon</option>
-										<option>Canada</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="property-types" data-live-search="true" data-live-search-placeholder="Search value">
-										<option>Property Types</option>
-										<option>Residential</option>
-										<option>Commercial</option>
-										<option>Land</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<div class="row">
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="bedrooms" data-live-search="true" data-live-search-placeholder="Search value">
-										<option>Bedrooms</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-										<option>7</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="bathrooms" data-live-search="true" data-live-search-placeholder="Search value">
-										<option>Bathrooms</option>
-										<option>1</option>
-										<option>2</option>
-										<option>3</option>
-										<option>4</option>
-										<option>5</option>
-										<option>6</option>
-										<option>7</option>
-									</select>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-								<div class="form-group">
-									<div class="range-slider">
-										<div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider"
-										     aria-disabled="false"></div>
-										<div class="clearfix"></div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">
-								<div class="form-group">
-									<button class="search-button">Search</button>
-								</div>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Search area start -->
+	{{--<!-- Search area start -->--}}
+	{{--<div class="search-area hidden-lg hidden-md">--}}
+		{{--<div class="container">--}}
+			{{--<div class="search-area-inner">--}}
+				{{--<div class="search-contents ">--}}
+					{{--<form method="GET">--}}
+						{{--<div class="row">--}}
+							{{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">--}}
+								{{--<div class="form-group">--}}
+									{{--<select class="selectpicker search-fields" name="area-from" data-live-search="true" data-live-search-placeholder="Search value">--}}
+										{{--<option>Area From</option>--}}
+										{{--<option>1000</option>--}}
+										{{--<option>800</option>--}}
+										{{--<option>600</option>--}}
+										{{--<option>400</option>--}}
+										{{--<option>200</option>--}}
+										{{--<option>100</option>--}}
+									{{--</select>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+							{{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">--}}
+								{{--<div class="form-group">--}}
+									{{--<select class="selectpicker search-fields" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">--}}
+										{{--<option>Property Status</option>--}}
+										{{--<option>For Sale</option>--}}
+										{{--<option>For Rent</option>--}}
+									{{--</select>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+							{{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">--}}
+								{{--<div class="form-group">--}}
+									{{--<select class="selectpicker search-fields" name="location" data-live-search="true" data-live-search-placeholder="Search value">--}}
+										{{--<option>Location</option>--}}
+										{{--<option>United States</option>--}}
+										{{--<option>United Kingdom</option>--}}
+										{{--<option>American Samoa</option>--}}
+										{{--<option>Belgium</option>--}}
+										{{--<option>Cameroon</option>--}}
+										{{--<option>Canada</option>--}}
+									{{--</select>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+							{{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">--}}
+								{{--<div class="form-group">--}}
+									{{--<select class="selectpicker search-fields" name="property-types" data-live-search="true" data-live-search-placeholder="Search value">--}}
+										{{--<option>Property Types</option>--}}
+										{{--<option>Residential</option>--}}
+										{{--<option>Commercial</option>--}}
+										{{--<option>Land</option>--}}
+									{{--</select>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+						{{--<div class="row">--}}
+							{{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">--}}
+								{{--<div class="form-group">--}}
+									{{--<select class="selectpicker search-fields" name="bedrooms" data-live-search="true" data-live-search-placeholder="Search value">--}}
+										{{--<option>Bedrooms</option>--}}
+										{{--<option>1</option>--}}
+										{{--<option>2</option>--}}
+										{{--<option>3</option>--}}
+										{{--<option>4</option>--}}
+										{{--<option>5</option>--}}
+										{{--<option>6</option>--}}
+										{{--<option>7</option>--}}
+									{{--</select>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+							{{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">--}}
+								{{--<div class="form-group">--}}
+									{{--<select class="selectpicker search-fields" name="bathrooms" data-live-search="true" data-live-search-placeholder="Search value">--}}
+										{{--<option>Bathrooms</option>--}}
+										{{--<option>1</option>--}}
+										{{--<option>2</option>--}}
+										{{--<option>3</option>--}}
+										{{--<option>4</option>--}}
+										{{--<option>5</option>--}}
+										{{--<option>6</option>--}}
+										{{--<option>7</option>--}}
+									{{--</select>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+							{{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">--}}
+								{{--<div class="form-group">--}}
+									{{--<div class="range-slider">--}}
+										{{--<div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider"--}}
+										     {{--aria-disabled="false"></div>--}}
+										{{--<div class="clearfix"></div>--}}
+									{{--</div>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+							{{--<div class="col-lg-3 col-md-3 col-sm-6 col-xs-6 ">--}}
+								{{--<div class="form-group">--}}
+									{{--<button class="search-button">Search</button>--}}
+								{{--</div>--}}
+							{{--</div>--}}
+						{{--</div>--}}
+					{{--</form>--}}
+				{{--</div>--}}
+			{{--</div>--}}
+		{{--</div>--}}
+	{{--</div>--}}
+	{{--<!-- Search area start -->--}}
 
 	<!-- Featured properties start -->
 	<div class="content-area featured-properties">
@@ -575,4 +559,12 @@
 		</div>
 	</div>
 	<!-- Intro section end -->
+@endsection
+@section('scripts')
+	<script>
+		$(function () {
+			let slider = $('#ranger-slider').val();
+			console.log(slider);
+		});
+	</script>
 @endsection
