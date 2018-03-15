@@ -175,7 +175,7 @@
 								<div class="col-lg-4 col-md-4 col-sm-6 col-xs-12  filtr-item" data-category="1, 2, 3">
 									<div class="property">
 										<!-- Property img -->
-										<a href="properties-details.html" class="property-img">
+										<a href="{{ url('/book') }}/{{ $hostel->id }}" class="property-img">
 											<div class="property-tag button alt featured">Book Now</div>
 											<div class="property-price">KES {{ number_format($hostel->price) }}</div>
 
@@ -188,11 +188,11 @@
 										<div class="property-content">
 											<!-- title -->
 											<h1 class="title">
-												<a href="properties-details.html">{{ $hostel->name }}</a>
+												<a href="{{ url('/book') }}/{{ $hostel->id }}">{{ $hostel->name }}</a>
 											</h1>
 											<!-- Property address -->
 											<h3 class="property-address">
-												<a href="properties-details.html">
+												<a>
 													<i class="fa fa-phone"></i> {{ $hostel->contact }}
 												</a>
 											</h3>
@@ -216,7 +216,7 @@
                                     <span class="left">
                                         <i class="fa fa-hashtag"></i> {{ $hostel->bookedUnits }} Booked </span>
 												<span class="right">
-                                        <a href="#">
+                                        <a href="{{ url('/book') }}/{{ $hostel->id }}">
 	                                        Book Now <i class="fa fa-key"></i>
                                         </a>
                                     </span>
@@ -232,126 +232,6 @@
 				<div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
 					<!-- Sidebar start -->
 					<div class="sidebar right">
-						<!-- Search contents sidebar start -->
-						<div class="sidebar-widget hidden-sm hidden-xs">
-							<div class="main-title-2">
-								<h1><span>Advanced</span> Search</h1>
-							</div>
-
-							<form method="GET">
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="property-status" data-live-search="true" data-live-search-placeholder="Search value">
-										<option>Property Status</option>
-										<option>For Sale</option>
-										<option>For Rent</option>
-									</select>
-								</div>
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="location" data-live-search="true" data-live-search-placeholder="Search value">
-										<option>Location</option>
-										<option>United States</option>
-										<option>United Kingdom</option>
-										<option>American Samoa</option>
-										<option>Belgium</option>
-										<option>Cameroon</option>
-										<option>Canada</option>
-									</select>
-								</div>
-
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="property-types" data-live-search="true" data-live-search-placeholder="Search value" >
-										<option>Property Types</option>
-										<option>Residential</option>
-										<option>Commercial</option>
-										<option>Land</option>
-									</select>
-								</div>
-
-								<div class="form-group">
-									<select class="selectpicker search-fields" name="area-from" data-live-search="true" data-live-search-placeholder="Search value" >
-										<option>Area From</option>
-										<option>1000</option>
-										<option>800</option>
-										<option>600</option>
-										<option>400</option>
-										<option>200</option>
-										<option>100</option>
-									</select>
-								</div>
-
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6">
-										<div class="form-group">
-											<select class="selectpicker search-fields" name="bedrooms">
-												<option>Bedrooms</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6">
-										<div class="form-group">
-											<select class="selectpicker search-fields" name="bathroom">
-												<option>Bathroom</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</div>
-									</div>
-								</div>
-
-								<div class="row">
-									<div class="col-lg-6 col-md-6 col-sm-6">
-										<div class="form-group">
-											<select class="selectpicker search-fields" name="balcony">
-												<option>Balcony</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6 col-sm-6">
-										<div class="form-group">
-											<select class="selectpicker search-fields" data-live-search="true" name="garage">
-												<option>Garage</option>
-												<option>1</option>
-												<option>2</option>
-												<option>3</option>
-												<option>4</option>
-												<option>5</option>
-											</select>
-										</div>
-									</div>
-								</div>
-
-								<div class="range-slider">
-									<label>Area</label>
-									<div data-min="0" data-max="10000" data-unit="Sq ft" data-min-name="min_area" data-max-name="max_area" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-									<div class="clearfix"></div>
-								</div>
-
-								<div class="range-slider">
-									<label>Price</label>
-									<div data-min="0" data-max="150000" data-unit="USD" data-min-name="min_price" data-max-name="max_price" class="range-slider-ui ui-slider" aria-disabled="false"></div>
-									<div class="clearfix"></div>
-								</div>
-
-								<div class="form-group">
-									<button class="search-button">Search</button>
-								</div>
-							</form>
-						</div>
-						<!-- Search contents sidebar end -->
-
 						<!-- Social media start -->
 						<div class="social-media sidebar-widget clearfix">
 							<!-- Main Title 2 -->
@@ -426,6 +306,51 @@
 							<p>@Lorem ipsum dolor<a href="#">sit amet, consectetur</a> adipiscing elit. Aenean id dignissim justo. Maecenas urna lacus, bibendum quis orci </p>
 						</div>
 						<!-- Latest tweet end -->
+						<!-- Main title -->
+						<div class="main-title-2">
+							<h1><span>Recently</span> Properties</h1>
+						</div>
+						<!-- Recently properties start -->
+						@foreach($recentHostels->take(3) as $hostel)
+							<div class="row">
+							<div class="recently-properties clearfix">
+									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  filtr-item" data-category="1, 2, 3">
+										<div class="property">
+											<!-- Property img -->
+											<a href="properties-details.html" class="property-img">
+												<div class="property-tag button alt featured">Book Now</div>
+												<div class="property-price">KES {{ number_format($hostel->price) }}</div>
+
+												<img src="{{ asset('/storage/hostel_images') }}/{{ $hostel->images->first()->image }}" alt="properties-1" class="img-responsive">
+
+
+
+											</a>
+											<!-- Property content -->
+											<div class="property-content">
+												<!-- title -->
+												<h1 class="title">
+													<a href="properties-details.html">{{ $hostel->name }}</a>
+												</h1>
+												<!-- Property address -->
+												<!-- Facilities List -->
+												<ul class="facilities-list clearfix">
+												</ul>
+												<!-- Property footer -->
+												<div class="property-footer">
+													<span class="">
+                                        <a href="{{ url('/book') }}/{{ $hostel->id }}">
+	                                        Book Now <i class="fa fa-key"></i>
+                                        </a>
+                                    </span>
+												</div>
+											</div>
+										</div>
+									</div>
+							</div>
+						</div>
+						@endforeach
+						<!-- Recently properties end -->
 					</div>
 					<!-- Sidebar end -->
 				</div>
