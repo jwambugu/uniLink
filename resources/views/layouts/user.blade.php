@@ -21,6 +21,7 @@
 	<link rel="stylesheet" type="text/css" href="{{ asset('nest/fonts/linearicons/style.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('nest/css/jquery.mCustomScrollbar.css') }}">
 	<link rel="stylesheet" type="text/css" href="{{ asset('nest/css/dropzone.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/rangeslider.css') }}">
 
 	<!-- Custom stylesheet -->
 	<link rel="stylesheet" type="text/css" href="{{ asset('nest/css/style.css') }}">
@@ -76,6 +77,7 @@
 <script type="text/javascript" src="{{ asset('nest/js/ie10-viewport-bug-workaround.js') }}"></script>
 <!-- Custom javascript -->
 <script type="text/javascript" src="{{ asset('nest/js/ie10-viewport-bug-workaround.js') }}"></script>
+<script src="{{ asset('js/rangeslider.min.js') }}"></script>
 <script>
 	$(function () {
 		$('[data-toggle="tooltip"]').tooltip()
