@@ -2,6 +2,8 @@
 
 namespace Tests\Feature;
 
+use App\User;
+use Laravel\Dusk\Browser;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -16,6 +18,11 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
+	    $this->assertDatabaseHas('users', [
+		    'email' => 'artisan254@gmail.com'
+	    ]);
+
         $response->assertStatus(200);
+
     }
 }
