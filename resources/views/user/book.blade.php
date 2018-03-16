@@ -282,17 +282,17 @@
 						<!-- Helping center start -->
 						<div class="sidebar-widget helping-box clearfix">
 							<div class="main-title-2">
-								<h1><span>Helping</span> Center</h1>
+								<h1><span>Contact</span> Dealer</h1>
 							</div>
 							<div class="helping-center">
 								<div class="icon"><i class="fa fa-map-marker"></i></div>
 								<h4>Address</h4>
-								<span>123 Kathal St. Tampa City,</span>
+								<span>01-10101 Chuka</span>
 							</div>
 							<div class="helping-center">
 								<div class="icon"><i class="fa fa-phone"></i></div>
 								<h4>Phone</h4>
-								<p><a href="tel:+55-417-634-7071">+55 417 634 7071</a> </p>
+								<p><a>{{ $hostel->contact }}</a> </p>
 							</div>
 						</div>
 						<!-- Helping center end -->
