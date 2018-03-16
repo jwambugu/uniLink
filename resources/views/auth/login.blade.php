@@ -47,7 +47,7 @@
 								<div class="clearfix"></div>
 							</div>
 							<div class="form-group">
-								<button type="submit" class="button-md button-theme btn-block">login</button>
+								<button type="submit" class="button-md button-theme btn-block" name="login">Login</button>
 							</div>
 							{{ csrf_field() }}
 						</form>
