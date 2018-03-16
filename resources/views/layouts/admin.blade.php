@@ -227,8 +227,7 @@
             </span>
 					</a>
 					<ul class="treeview-menu">
-						<li><a href="#"><i class="fa fa-check text-success"></i> Processed Transactions</a></li>
-						<li><a href="#"><i class="fa fa-close text-red"></i> Failed Transactions</a></li>
+						<li><a href="{{ route('admin.successful') }}"><i class="fa fa-check text-success"></i> Processed Transactions</a></li>
 					</ul>
 				</li>
 				<li>
