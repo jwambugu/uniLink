@@ -304,7 +304,7 @@
 									<li>Enhanced Security</li>
 								</ul>
 								<div class="clearfix"></div>
-								<a href="#" class="btn button-sm button-theme btn-color">Get Started</a>
+								<a href="{{ route('user.hostels') }}" class="btn button-sm button-theme btn-color">Get Started</a>
 							</div>
 						</div>
 					</div>
@@ -327,7 +327,7 @@
 									<li>5 MBPS WiFi</li>
 									<li>Enhanced Security</li>
 								</ul>
-								<a href="submit-property.html" class="btn button-sm button-theme">Get Started</a>
+								<a href="{{ route('user.hostels') }}" class="btn button-sm button-theme">Get Started</a>
 							</div>
 						</div>
 					</div>
@@ -348,7 +348,7 @@
 									<li>24 hrs Enhanced Security</li>
 								</ul>
 								<div class="clearfix"></div>
-								<a href="submit-property.html" class="btn button-sm button-theme btn-color">Get Started</a>
+								<a href="{{ route('user.hostels') }}" class="btn button-sm button-theme btn-color">Get Started</a>
 							</div>
 						</div>
 					</div>
@@ -369,7 +369,7 @@
 									<li>24 hrs CCTV Security</li>
 								</ul>
 								<div class="clearfix"></div>
-								<a href="submit-property.html" class="btn button-sm button-theme btn-color">Get Started</a>
+								<a href="{{ route('user.hostels') }}" class="btn button-sm button-theme btn-color">Get Started</a>
 							</div>
 						</div>
 					</div>
