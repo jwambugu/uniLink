@@ -28,6 +28,7 @@
 					<!-- /.box-header -->
 					<div class="box-body table-responsive no-padding">
 						<table class="table table-hover">
+							<thead>
 							<tr>
 								<th>Owner ID</th>
 								<th>Name</th>
@@ -36,6 +37,7 @@
 								<th>Remaining Units</th>
 								<th>Rent</th>
 							</tr>
+							</thead>
 							@foreach($hostels as $hostel)
 								<tr>
 									<td>
