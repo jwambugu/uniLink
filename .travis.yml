@@ -4,7 +4,7 @@ addons:
    chrome: stable
 
 install:
-   - cp .env.testing .env
+   - cp .env.travis .env
    - travis_retry composer install --no-interaction --prefer-dist --no-suggest
 
 before_script:
