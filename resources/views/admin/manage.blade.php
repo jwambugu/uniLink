@@ -51,7 +51,7 @@
 									<td>
 										<span class="label label-success">{{ $hostel->totalRooms - $hostel->bookedUnits }}</span>
 									</td>
-									<td>KES {{ $hostel->price }}</td>
+									<td>KES {{ number_format($hostel->price) }}</td>
 								</tr>
 							@endforeach
 						</table>
