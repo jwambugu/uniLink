@@ -31,7 +31,7 @@ class PageController extends Controller
 	/**
 	 * Authenticate the admin
 	 * @param Request $request
-	 * @return Request
+	 * @return \Illuminate\Http\RedirectResponse
 	 */
 	public function postLogin(Request $request){
 		// Check if credentials match
