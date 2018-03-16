@@ -7,6 +7,8 @@ install:
    - cp .env.travis .env
    - travis_retry composer install --no-interaction --prefer-dist --no-suggest
 
+php:
+  - 7.2
 before_script:
    - google-chrome-stable --headless --disable-gpu --remote-debugging-port=9222 http://localhost &
    - php artisan serve &
