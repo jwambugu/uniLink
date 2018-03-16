@@ -293,4 +293,16 @@ class AdminController extends Controller
 
 		return redirect()->route('admin.manage');
 	}
+
+	/**
+	 * Fetch all the successful transactions
+	*/
+	public function getSuccessful(){
+
+		$payments = Payment::orderBy('created_at', 'desc')->paginate(10);
+
+		return view('admin.successful', [
+			'payments' => $payments
+		]);
+	}
 }
