@@ -204,4 +204,10 @@ Route::prefix('admin')->group(function (){
 		'uses' => 'AdminController@updateHostel',
 		'as' => 'admin.update'
 	]);
+
+	// Route for successful transactions
+	Route::get('/successful', [
+		'uses' => 'AdminController@getSuccessful',
+		'as' => 'admin.successful'
+	]);
 });
