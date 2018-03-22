@@ -123,6 +123,23 @@ Route::post('/advanced', [
 	'as' => 'user.advancedSearch'
 ]);
 
+Route::get('/send', function()
+{
+	$beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
+	$beautymail->send('emails.testSend', [], function($message)
+	{
+		$message
+			->from('bar@example.com')
+			->to('foo@example.com', 'John Smith')
+			->subject('Welcome!');
+	});
+
+});
+// Email testing route
+Route::post('/send', [
+	'uses' => 'EmailController@testSend',
+	'as' => 'test.email'
+]);
 
 /**
  * Here we have all the admins routes
