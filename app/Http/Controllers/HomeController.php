@@ -208,7 +208,10 @@ class HomeController extends Controller
 			// Increment the count of booked units
 			$this->bookedIncrement($hostelID);
 
-			alert()->success('Hostel successfully booked.', 'Booking Complete')->persistent('Got It');
+			alert()->success('Hostel successfully booked. Check your email for an invoice.', 'Booking Complete')->persistent('Got It');
+
+			// Send an email to the user
+			$this->sendInvoiceEmail($hostelID, $stripeID);
 
 			return redirect()->route('home');
 
@@ -252,4 +255,31 @@ class HomeController extends Controller
 			'hostel' => $hostel
 		]);
 	}
+
+	/**
+	 * Send an email to the user as an invoice
+	 * @param $hostel
+	 * @param $stripeID
+	 */
+	public function sendInvoiceEmail($hostel, $stripeID){
+		$hostel = Hostel::find($hostel);
+
+		$hostelName = $hostel->name;
+		$price = $hostel->price;
+
+		$mail = app()->make(\Snowfire\Beautymail\Beautymail::class);
+		$mail->send('emails.invoice', [
+			'name' => auth()->user()->name,
+			'hostel' => $hostelName,
+			'price' => $price,
+			'stripeID' => $stripeID
+		], function($message)
+		{
+			$message
+				->from(env('APP_EMAIL'))
+				->to(auth()->user()->email, auth()->user()->name)
+				->subject('Booking Invoice');
+		});
+	}
+
 }
