@@ -74,6 +74,9 @@
 					</ul>
 					@else
 					<ul class="nav navbar-nav navbar-right rightside-navbar">
+						<li>
+							<a tabindex="0" href="{{ route('user.hostels') }}">Book Hostels</a>
+						</li>
 						<li class="dropdown ">
 							<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
 								{{ auth()->user()->name }}<span class="caret"></span>
