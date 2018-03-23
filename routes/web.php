@@ -46,13 +46,13 @@ Route::get('/reset', [
 
 // Show all hostels
 Route::get('/hostels', [
-	'uses' => 'PageController@getHostels',
+	'uses' => 'HomeController@getHostels',
 	'as' => 'user.hostels'
 ]);
 
 // Show a hostel to be booked
 Route::get('book/{id}', [
-	'uses' => 'PageController@getBook',
+	'uses' => 'HomeController@getBook',
 	'as' => 'user.getBook'
 ]);
 
@@ -101,13 +101,13 @@ Route::post('/charge', [
 
 // Filter hostels by price ASC
 Route::post('/asc', [
-	'uses' => 'PageController@sortByAmountASC',
+	'uses' => 'HomeController@sortByAmountASC',
 	'as' => 'user.amountASC'
 ]);
 
 // Filter hostels by price DESC
 Route::post('/desc', [
-	'uses' => 'PageController@sortByAmountDESC',
+	'uses' => 'HomeController@sortByAmountDESC',
 	'as' => 'user.amountDESC'
 ]);
 
