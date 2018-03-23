@@ -39,6 +39,9 @@
 						</tbody>
 					</table>
 					<!-- table end -->
+					<div class="pull-right">
+						{{ $myHostels->links() }}
+					</div>
 				</div>
 			</div>
 		</div>
