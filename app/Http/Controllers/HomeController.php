@@ -21,7 +21,11 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth', [
+        	'except' => [
+        		'bookHostel', 'getBook', 'sortByAmountASC', 'sortByAmountDESC', 'getHostels'
+	        ]
+        ]);
     }
 
     /**
@@ -31,7 +35,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-    	$myHostels = Payment::where('user_id', auth()->user()->id)->with('user', 'hostel')->get();
+    	$myHostels = Payment::where('user_id', auth()->user()->id)->with('user', 'hostel')->paginate(2);
     	$images = [];
 
     	foreach ($myHostels as $hostel){
@@ -44,6 +48,77 @@ class HomeController extends Controller
 	        'images' => $images
         ]);
     }
+
+	/**
+	 * Show all the hostels for booking
+	 *
+	 */
+	public function getHostels(){
+		// Fetch all hostels order by the most booked
+		$hostels = Hostel::orderBy('bookedUnits', 'DESC')->with('images', 'rooms')->paginate(9);
+
+		//return $hostels;
+		return view('user.hostels', [
+			'hostels' => $hostels
+		]);
+	}
+
+	/**
+	 * Show the hostels available for booking
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function bookHostel(){
+		// Fetch all hostels order by the most booked
+		$hostels = Hostel::orderBy('bookedUnits', 'DESC')->with('images', 'rooms')->paginate(9);
+
+		//return $hostels;
+		return view('user.hostels', [
+			'hostels' => $hostels
+		]);
+	}
+
+	/**
+	 * Show a hostel to be booked
+	 * @param $id
+	 * @return \Illuminate\Contracts\View\Factory|Request|\Illuminate\View\View
+	 */
+	public function getBook($id){
+
+		// Find the hostel by id
+		$hostel = Hostel::where('id', $id)->with('images', 'rooms')->first();
+		$recentHostels = Hostel::orderBy('created_at', 'DESC')->with('images')->take(3)->get();
+
+		return view('user.book', [
+			'hostel' => $hostel,
+			'recentHostels' => $recentHostels
+		]);
+	}
+
+	/**
+	 * Sort hostels by price ASC
+	 */
+	public function sortByAmountASC(){
+		// Fetch all hostels order by the price asc
+		$hostels = Hostel::orderBy('price', 'asc')->with('images', 'rooms')->paginate(9);
+
+		//return $hostels;
+		return view('user.hostels', [
+			'hostels' => $hostels
+		]);
+	}
+
+	/**
+	 * Sort hostels by price DESC
+	 */
+	public function sortByAmountDESC(){
+		// Fetch all hostels order by the price asc
+		$hostels = Hostel::orderBy('price', 'desc')->with('images', 'rooms')->paginate(9);
+
+		//return $hostels;
+		return view('user.hostels', [
+			'hostels' => $hostels
+		]);
+	}
 
 	/**
 	 * Show the checkout page
