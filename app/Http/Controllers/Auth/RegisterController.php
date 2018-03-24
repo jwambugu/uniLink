@@ -66,7 +66,7 @@ class RegisterController extends Controller
     	// TODO replace the regNo with the actual data from the form
         $user = User::create([
             'name' => $data['name'],
-            'regNo' => '123456',
+            'regNo' => floor(microtime(true)),
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
