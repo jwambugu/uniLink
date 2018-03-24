@@ -17,7 +17,7 @@ class LoginTest extends DuskTestCase
     public function testExample()
     {
 	    try {
-	    	$testTime = microtime(true);
+	    	$testTime = floor(microtime(true));
 
 	    	$user = factory(User::class)->create([
 	    		'email' => 'test'.$testTime.'com',
