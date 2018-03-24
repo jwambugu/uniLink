@@ -123,6 +123,18 @@ Route::post('/advanced', [
 	'as' => 'user.advancedSearch'
 ]);
 
+// Get notifs page
+Route::get('/notifs', [
+	'uses' => 'HomeController@getNotifs',
+	'as' => 'user.notifs'
+]);
+
+// Mark notif as read
+Route::post('/notifs', [
+	'uses' => 'HomeController@markNotifAsRead',
+	'as' => 'user.notif.read'
+]);
+
 Route::get('/send', function()
 {
 	$beautymail = app()->make(Snowfire\Beautymail\Beautymail::class);
