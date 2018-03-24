@@ -75,6 +75,10 @@
 					@else
 					<ul class="nav navbar-nav navbar-right rightside-navbar">
 						<li>
+							<a tabindex="0" href="{{ route('user.hostels') }}"><i class="fa fa-envelope-o
+"></i> <span class="badge" style="background-color: #b94a48">1</span></a>
+						</li>
+						<li>
 							<a tabindex="0" href="{{ route('user.hostels') }}">Book Hostels</a>
 						</li>
 						<li class="dropdown ">
