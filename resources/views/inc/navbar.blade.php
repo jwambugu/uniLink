@@ -73,10 +73,33 @@
 						</li>
 					</ul>
 					@else
+					<?php
+					$notifs = count(auth()->user()->notifs->where('status', 0));
+					?>
 					<ul class="nav navbar-nav navbar-right rightside-navbar">
-						<li>
-							<a tabindex="0" href="{{ route('user.hostels') }}"><i class="fa fa-envelope-o
-"></i> <span class="badge" style="background-color: #b94a48">1</span></a>
+						<li class="dropdown ">
+							<a tabindex="0" data-toggle="dropdown" data-submenu="" aria-expanded="false">
+								<i class="fa fa-envelope-o
+								"></i> <span class="badge" style="background-color: #b94a48">{{ $notifs }}</span><span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li>
+									<a href="{{ route('user.notifs') }}">
+										@if($notifs == 0)
+											No Notifs
+											@elseif($notifs == 1)
+											You have {{ $notifs }} notification
+											@else
+											You have {{ $notifs }} notifications
+
+										@endif
+									</a>
+
+									<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+										{{ csrf_field() }}
+									</form>
+								</li>
+							</ul>
 						</li>
 						<li>
 							<a tabindex="0" href="{{ route('user.hostels') }}">Book Hostels</a>
