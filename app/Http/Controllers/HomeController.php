@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Hostel;
+use App\Notif;
 use App\Payment;
 use App\User;
 use Illuminate\Http\Request;
@@ -33,8 +34,8 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index(){
+
     	$myHostels = Payment::where('user_id', auth()->user()->id)->with('user', 'hostel')->paginate(2);
     	$images = [];
 
@@ -232,6 +233,9 @@ class HomeController extends Controller
 
 		alert()->success('The password has been successfully  updated.', 'Passwords Changed')->autoclose(3000);
 
+		// Create a new notification
+		$this->createNotif('Password Changed', 'You have successfully changed your password. Please use your new password for the next login.');
+
 		return redirect()->route('home');
 	}
 
@@ -313,6 +317,11 @@ class HomeController extends Controller
 
 		$hostel->update();
 
+		// Create a new notification
+		$message = "You have successfully booked $hostel->name. The hostel rent is $hostel->price. Kindly check your email we have sent an receipt. Kindly contact the hostel owner with $hostel->contact to verify the payment and also to book a room.";
+
+		$this->createNotif('New Hostel Booked',$message);
+
 		return null;
 	}
 
@@ -355,6 +364,52 @@ class HomeController extends Controller
 				->to(auth()->user()->email, auth()->user()->name)
 				->subject('Booking Invoice');
 		});
+	}
+
+	/**
+	 * Show the notifs page
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
+	public function getNotifs(){
+		$notifs = Notif::where('user_id', auth()->user()->id)
+			->where('status', 0)
+			->orderBy('updated_at', 'desc')
+			->paginate(3);
+
+		return view('user.notifs', [
+			'notifs' => $notifs
+		]);
+	}
+
+	/**
+	 * Mark the notif as read
+	 * @param Request $request
+	 * @return Request
+	 */
+	public function markNotifAsRead(Request $request){
+		$notif = Notif::find($request->id);
+
+		$notif->status = 1;
+		$notif->update();
+
+		return redirect()->back();
+	}
+
+	/**
+	 * Create in app notifications
+	 * @param $title
+	 * @param $message
+	 * @return null
+	 */
+	public function createNotif($title, $message){
+		Notif::create([
+			'title' => $title,
+			'message' => $message,
+			'user_id' => auth()->user()->id,
+			'status' => 0
+		]);
+
+		return null;
 	}
 
 }
