@@ -16,29 +16,38 @@
 					<div class="main-title-2"><br>
 						<h1><span>My</span> Hostels</h1>
 					</div>
-					<!-- table start -->
-					<table class="manage-table responsive-table">
-						<tbody>
+					@if(count($myHostels) == 0)
+						<div class="agent-box-big clearfix">
+							<div class="col-lg-12 col-md-12 col-sm-12 agent-content detail text-center text-danger">
+								<h1>You have booked <strong>0</strong> hostels.</h1>
+								<a href="{{ route('user.hostels') }}" class="btn button-sm button-theme">Let's Book</a>
+							</div>
+						</div>
+						@else
+						<!-- table start -->
+							<table class="manage-table responsive-table">
+								<tbody>
 
-						@foreach($images as $image)
-						@endforeach
-						@foreach($myHostels as $myHostel)
-							<tr>
-								<td class="title-container">
-									<img src="{{ asset('storage/hostel_images') }}/{{ $image->image }}" alt="my-properties-1" class="img-responsive hidden-xs">
-									<div class="title">
-										<h4><a href="{{ url('/view') }}/{{ $myHostel->hostel->id }}">{{ $myHostel->hostel->name }}</a></h4>
-										<span><i class="fa fa-phone"></i> {{ $myHostel->hostel->contact }}</span>
-										<span class="table-property-price">Rent Amount: KES {{ number_format($myHostel->hostel->price) }} / per sem</span>
-										<br>
-										<span class="table-property-price">Booked On: {{ date('F d, Y', strtotime($myHostel->created_at)) }}</span>
-									</div>
-								</td>
-							</tr>
-						@endforeach
-						</tbody>
-					</table>
-					<!-- table end -->
+								@foreach($images as $image)
+								@endforeach
+								@foreach($myHostels as $myHostel)
+									<tr>
+										<td class="title-container">
+											<img src="{{ asset('storage/hostel_images') }}/{{ $image->image }}" alt="my-properties-1" class="img-responsive hidden-xs">
+											<div class="title">
+												<h4><a href="{{ url('/view') }}/{{ $myHostel->hostel->id }}">{{ $myHostel->hostel->name }}</a></h4>
+												<span><i class="fa fa-phone"></i> {{ $myHostel->hostel->contact }}</span>
+												<span class="table-property-price">Rent Amount: KES {{ number_format($myHostel->hostel->price) }} / per sem</span>
+												<br>
+												<span class="table-property-price">Booked On: {{ date('F d, Y', strtotime($myHostel->created_at)) }}</span>
+											</div>
+										</td>
+									</tr>
+								@endforeach
+								</tbody>
+							</table>
+							<!-- table end -->
+					@endif
 					<div class="pull-right">
 						{{ $myHostels->links() }}
 					</div>
