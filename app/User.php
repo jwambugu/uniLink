@@ -52,4 +52,13 @@ class User extends Authenticatable
 	public function payment(){
 		return $this->belongsTo('App\Payment');
 	}
+
+	/**
+	 * Here we define the relationship between this model
+	 * & the notif model
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function notifs(){
+		return $this->hasMany('App\Notif');
+	}
 }
