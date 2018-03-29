@@ -18,8 +18,15 @@
 						<h5 class="widget-user-desc text-justify">
 							{{ $hostel->description }}
 						</h5>
-						<div class="col-sm-offset-11">
-							<a href="/admin/edit/{{ $hostel->id }}" class="btn btn-success btn-block">Edit Data</a>
+						<div class="col-sm-offset-8">
+							<div class="row">
+								<div class="col-sm-6">
+									<a href="/admin/edit/{{ $hostel->id }}" class="btn btn-success btn-block btn-sm">Edit Data</a>
+								</div>
+								<div class="col-sm-6">
+									<button class="btn btn-danger btn-sm btn-block" id="deleteBtn" data-id="{{ $hostel->id }}">Remove Hostel</button>
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="box-footer no-padding">
@@ -108,4 +115,66 @@
 		<!-- /.row -->
 	</section>
 	{{--{{ $hostel->images }}--}}
+@endsection
+@section('scripts')
+	<script>
+        $(document).ready(function () {
+            let deleteBtn = $('#deleteBtn');
+            let token = '{{ csrf_token() }}';
+
+	        $(deleteBtn).on('click', function () {
+		        let hostelID = $(deleteBtn).data('id');
+		        let hostelName = '{{ $hostel->name }}';
+		        let url = '{{ route('admin.delete') }}';
+		        let redirectUrl = '{{ route('admin.manage') }}';
+
+                swal({
+                    title: 'Confirm Deletion',
+                    text: 'Are you sure you want to delete  ' + hostelName + ' data?',
+                    showCancelButton: true
+                })
+                    .then(result => {
+                        if (result.value) {
+                            $.ajax({
+                                url: url,
+                                dataType: 'text',
+                                type: 'post',
+                                contentType: 'application/x-www-form-urlencoded',
+                                data: {
+                                    hostelID: hostelID,
+                                    _token: token
+                                },
+                                success: function(response){
+                                    //return console.log(response);
+                                    let data = JSON.parse(response);
+
+                                    swal(
+                                        data.title,
+                                        data.text,
+                                        data.status
+                                    )
+                                        .then(result => {
+                                            if(result.value){
+                                                window.location.href = redirectUrl;
+                                            }
+                                        });
+
+                                },
+                                error: function(errorThrown ){
+                                    //console.log( errorThrown );
+                                }
+                            });
+
+                        } else {
+                            swal(
+                                'Cancelled Action',
+                                'The removal of ' + hostelName +' has been cancelled.',
+                                'success'
+                            )
+                        }
+                    })
+
+            })
+        })
+	</script>
 @endsection
