@@ -239,4 +239,10 @@ Route::prefix('admin')->group(function (){
 		'uses' => 'AdminController@getSuccessful',
 		'as' => 'admin.successful'
 	]);
+
+	// Delete a hostel
+	Route::post('/delete', [
+		'uses' => 'AdminController@deleteHostel',
+		'as' => 'admin.delete'
+	]);
 });
