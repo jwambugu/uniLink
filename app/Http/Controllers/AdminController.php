@@ -296,7 +296,8 @@ class AdminController extends Controller
 
 	/**
 	 * Fetch all the successful transactions
-	*/
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+	 */
 	public function getSuccessful(){
 
 		$payments = Payment::orderBy('created_at', 'desc')->paginate(10);
@@ -304,5 +305,24 @@ class AdminController extends Controller
 		return view('admin.successful', [
 			'payments' => $payments
 		]);
+	}
+
+	/**
+	 * Delete a hostel
+	 * @param Request $request
+	 * @return \Illuminate\Http\JsonResponse
+	 */
+	public function deleteHostel(Request $request){
+		$hostel = Hostel::find($request->hostelID);
+
+		$hostel->delete();
+
+		$response = [
+			'title' => 'Hostel Deleted',
+			'text' => 'The hostel has been successfully removed.',
+			'status' => 'success'
+		];
+
+		return response()->json($response);
 	}
 }
