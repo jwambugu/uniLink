@@ -9,6 +9,7 @@ use App\Payment;
 use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -314,6 +315,17 @@ class AdminController extends Controller
 	 */
 	public function deleteHostel(Request $request){
 		$hostel = Hostel::find($request->hostelID);
+		$hostels = Hostel::find($request->hostelID)->with('images')->get();
+
+		foreach ($hostels as $hostel){
+			foreach ($hostel->images as $image){
+				// Check if the file exists
+				if(is_file(storage_path('app/public/hostel_images/'.$image->image))){
+					// Delete the files from the disk
+					unlink(storage_path('app/public/hostel_images/'.$image->image));
+				}
+			}
+		}
 
 		$hostel->delete();
 
