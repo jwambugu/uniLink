@@ -10,6 +10,15 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12">
+					@if (session('status'))
+						<div class="alert alert-success">
+							{{ session('status') }}
+						</div>
+						<div class="alert alert-success wow fadeInLeft delay-03s"  role="alert">
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+							{{ session('status') }}
+						</div>
+				@endif
 					<!-- Form content box start -->
 					<div class="form-content-box">
 						<!-- details -->
@@ -21,7 +30,7 @@
 							<!-- Form start -->
 							<form action="{{ route('password.email') }}" method="POST">
 								<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-									<input type="email" name="email" class="input-text" placeholder="Email Address" >
+									<input type="email" name="email" class="input-text" placeholder="Email Address" value="{{ old('email') }}" >
 									@if ($errors->has('email'))
 										<span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
