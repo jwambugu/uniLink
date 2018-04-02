@@ -72,6 +72,7 @@ class AdminController extends Controller
 		// Validate the request
 		$this->validate($request, [
 			'name' => 'required',
+			'ownerID' => 'required|unique:hostels',
 			'description' => 'required',
 			'totalRooms' => 'required|numeric',
 			'latitude' => 'required|numeric',
