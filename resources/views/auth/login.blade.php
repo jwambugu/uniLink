@@ -21,7 +21,7 @@
 						<!-- Form start -->
 						<form action="{{ route('login') }}" method="POST">
 							<div class="form-group {{ $errors->has('email') ? ' has-error' : '' }}">
-								<input type="email" name="email" class="input-text" placeholder="Email Address" >
+								<input type="email" name="email" class="input-text" placeholder="Email Address" value="{{ old('email') }}" >
 								@if ($errors->has('email'))
 									<span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>

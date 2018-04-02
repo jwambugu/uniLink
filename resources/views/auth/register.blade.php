@@ -36,7 +36,7 @@
 								@endif
 							</div>
 							<div class="form-group {{ $errors->has('password') ? ' has-error' : '' }}">
-								<input type="password" name="password" class="input-text" placeholder="Password" value="{{ old('password') }}">
+								<input type="password" name="password" class="input-text" placeholder="Password">
 								@if ($errors->has('email'))
 									<span class="help-block text-red">
                                         <strong>{{ $errors->first('password') }}</strong>
@@ -44,7 +44,7 @@
 								@endif
 							</div>
 							<div class="form-group {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-								<input type="password" name="password_confirmation" class="input-text" placeholder="Confirm Password" value="{{ old('password_confirmation') }}">
+								<input type="password" name="password_confirmation" class="input-text" placeholder="Confirm Password" >
 								@if ($errors->has('password_confirmation'))
 									<span class="help-block text-red">
                                         <strong>{{ $errors->first('password_confirmation') }}</strong>
