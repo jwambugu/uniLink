@@ -51,8 +51,8 @@ class HomeController extends Controller
     }
 
 	/**
-	 * Show all the hostels for booking
-	 *
+	 * Show all the hostels available for booking
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function getHostels(){
 		// Fetch all hostels order by the most booked
@@ -97,6 +97,7 @@ class HomeController extends Controller
 
 	/**
 	 * Sort hostels by price ASC
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function sortByAmountASC(){
 		// Fetch all hostels order by the price asc
@@ -110,6 +111,7 @@ class HomeController extends Controller
 
 	/**
 	 * Sort hostels by price DESC
+	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
 	public function sortByAmountDESC(){
 		// Fetch all hostels order by the price asc
