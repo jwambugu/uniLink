@@ -289,7 +289,7 @@ class HomeController extends Controller
 			// Increment the count of booked units
 			$this->bookedIncrement($hostelID);
 
-			alert()->success('Hostel successfully booked. Check your email for an invoice.', 'Booking Complete')->persistent('Got It');
+			alert()->success('Hostel successfully booked. Check your email for a receipt.', 'Booking Complete')->persistent('Got It');
 
 			// Send an email to the user
 			$this->sendInvoiceEmail($hostelID, $stripeID);
@@ -302,7 +302,10 @@ class HomeController extends Controller
 				'ip' => $request->ip(),
 				'message' => $exception->getMessage()
 			]]);
-			return $exception->getMessage();
+
+			alert()->error('Hostel booking unsuccessful. Please ensure you have a stable Internet connection ', 'Booking Incomplete')->persistent('Got It');
+
+			return redirect()->back();
 		}
 	}
 
