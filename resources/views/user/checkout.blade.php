@@ -70,12 +70,12 @@
 									<!-- btn -->
 									<form action="{{ route('user.charge') }}" method="POST">
 										{{ csrf_field() }}
-										<input type="hidden" name="amount" value="{{ $hostel->price * 100 }}">
+										<input type="hidden" name="amount" value="{{ $hostel->deposit * 100 }}">
 										<input type="hidden" name="hostelID" value="{{ $hostel->id }}">
 										<script
 												src="https://checkout.stripe.com/checkout.js" class="stripe-button"
 												data-key="{{ env('STRIPE_PUBLISHABLE_KEY') }}"
-												data-amount="{{ $hostel->price * 100 }}"
+												data-amount="{{ $hostel->deposit * 100 }}"
 												data-name="UniLink"
 												data-description="Widget"
 												data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
