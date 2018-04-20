@@ -127,9 +127,9 @@
 					<div class="info-box-content">
 						<span class="info-box-text">Total Money Received</span>
 						<span class="info-box-number">KES {{ number_format($totalPaidAmount->sum('amount')) }}</span>
-						{{--<div class="progress">--}}
-							{{--<div class="progress-bar" style="width: 20%"></div>--}}
-						{{--</div>--}}
+						<div class="progress">
+							<div class="progress-bar" style="width: 100%"></div>
+						</div>
 						{{--<span class="progress-description">--}}
                    {{--{{ date('m') }}--}}
                   {{--</span>--}}
@@ -145,11 +145,11 @@
 						<span class="info-box-number">{{ count($totalPaidAmount) }}</span>
 						
 						<div class="progress">
-							<div class="progress-bar" style="width: 40%"></div>
+							<div class="progress-bar" style="width: 100%"></div>
 						</div>
-						<span class="progress-description">
-                    40% Increase in 30 Days
-                  </span>
+						{{--<span class="progress-description">--}}
+                    {{--40% Increase in 30 Days--}}
+                  {{--</span>--}}
 					</div>
 					<!-- /.info-box-content -->
 				</div>
@@ -162,7 +162,7 @@
 						<span class="info-box-number">{{ count($totalPaidAmount) }}</span>
 						
 						<div class="progress">
-							<div class="progress-bar" style="width: 20%"></div>
+							<div class="progress-bar" style="width: 100%"></div>
 						</div>
 						<span class="progress-description">
                     {{--20% Increase in 30 Days--}}
@@ -179,7 +179,7 @@
 						<span class="info-box-number">0</span>
 						
 						<div class="progress">
-							<div class="progress-bar" style="width: 70%"></div>
+							<div class="progress-bar" style="width: 100%"></div>
 						</div>
 						<span class="progress-description">
                     {{--70% Increase in 30 Days--}}
