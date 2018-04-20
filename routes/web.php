@@ -153,6 +153,18 @@ Route::post('/send', [
 	'as' => 'test.email'
 ]);
 
+// Send a mesage to the hostel owner
+Route::post('/contact/owner', [
+	'uses' => 'PageController@contactOwner',
+	'as' => 'user.contactOwner'
+]);
+
+// Contact form
+Route::post('/contact', [
+	'uses' => 'PageController@postContactUs',
+	'as' => 'user.contact'
+]);
+
 /**
  * Here we have all the admins routes
  * @prefix admin
