@@ -82,61 +82,61 @@
 							<li class="footer"><a href="#">See All Messages</a></li>
 						</ul>
 					</li>
-					<!-- Notifications: style can be found in dropdown.less -->
-					<li class="dropdown notifications-menu">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="fa fa-bell-o"></i>
-							<span class="label label-warning">10</span>
-						</a>
-						<ul class="dropdown-menu">
-							<li class="header">You have 10 notifications</li>
-							<li>
-								<!-- inner menu: contains the actual data -->
-								<ul class="menu">
-									<li>
-										<a href="#">
-											<i class="fa fa-users text-aqua"></i> 5 new members joined today
-										</a>
-									</li>
-								</ul>
-							</li>
-							<li class="footer"><a href="#">View all</a></li>
-						</ul>
-					</li>
-					<!-- Tasks: style can be found in dropdown.less -->
-					<li class="dropdown tasks-menu">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<i class="fa fa-flag-o"></i>
-							<span class="label label-danger">9</span>
-						</a>
-						<ul class="dropdown-menu">
-							<li class="header">You have 9 tasks</li>
-							<li>
-								<!-- inner menu: contains the actual data -->
-								<ul class="menu">
-									<li><!-- Task item -->
-										<a href="#">
-											<h3>
-												Design some buttons
-												<small class="pull-right">20%</small>
-											</h3>
-											<div class="progress xs">
-												<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
-												     aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
-													<span class="sr-only">20% Complete</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<!-- end task item -->
-								</ul>
-							</li>
-							<li class="footer">
-								<a href="#">View all tasks</a>
-							</li>
-						</ul>
-					</li>
-					<!-- User Account: style can be found in dropdown.less -->
+					{{--<!-- Notifications: style can be found in dropdown.less -->--}}
+					{{--<li class="dropdown notifications-menu">--}}
+						{{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
+							{{--<i class="fa fa-bell-o"></i>--}}
+							{{--<span class="label label-warning">10</span>--}}
+						{{--</a>--}}
+						{{--<ul class="dropdown-menu">--}}
+							{{--<li class="header">You have 10 notifications</li>--}}
+							{{--<li>--}}
+								{{--<!-- inner menu: contains the actual data -->--}}
+								{{--<ul class="menu">--}}
+									{{--<li>--}}
+										{{--<a href="#">--}}
+											{{--<i class="fa fa-users text-aqua"></i> 5 new members joined today--}}
+										{{--</a>--}}
+									{{--</li>--}}
+								{{--</ul>--}}
+							{{--</li>--}}
+							{{--<li class="footer"><a href="#">View all</a></li>--}}
+						{{--</ul>--}}
+					{{--</li>--}}
+					{{--<!-- Tasks: style can be found in dropdown.less -->--}}
+					{{--<li class="dropdown tasks-menu">--}}
+						{{--<a href="#" class="dropdown-toggle" data-toggle="dropdown">--}}
+							{{--<i class="fa fa-flag-o"></i>--}}
+							{{--<span class="label label-danger">9</span>--}}
+						{{--</a>--}}
+						{{--<ul class="dropdown-menu">--}}
+							{{--<li class="header">You have 9 tasks</li>--}}
+							{{--<li>--}}
+								{{--<!-- inner menu: contains the actual data -->--}}
+								{{--<ul class="menu">--}}
+									{{--<li><!-- Task item -->--}}
+										{{--<a href="#">--}}
+											{{--<h3>--}}
+												{{--Design some buttons--}}
+												{{--<small class="pull-right">20%</small>--}}
+											{{--</h3>--}}
+											{{--<div class="progress xs">--}}
+												{{--<div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"--}}
+												     {{--aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">--}}
+													{{--<span class="sr-only">20% Complete</span>--}}
+												{{--</div>--}}
+											{{--</div>--}}
+										{{--</a>--}}
+									{{--</li>--}}
+									{{--<!-- end task item -->--}}
+								{{--</ul>--}}
+							{{--</li>--}}
+							{{--<li class="footer">--}}
+								{{--<a href="#">View all tasks</a>--}}
+							{{--</li>--}}
+						{{--</ul>--}}
+					{{--</li>--}}
+					{{--<!-- User Account: style can be found in dropdown.less -->--}}
 					<li class="dropdown user user-menu">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 							<img src="{{ asset('img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
@@ -187,14 +187,15 @@
 				</div>
 			</div>
 			<!-- search form -->
-			<form action="#" method="get" class="sidebar-form">
+			<form action="{{ route('admin.manage') }}" method="POST" class="sidebar-form">
 				<div class="input-group">
-					<input type="text" name="q" class="form-control" placeholder="Search...">
+					<input type="text" name="ownerID" class="form-control" placeholder="Search by OwnerID">
 					<span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
               </span>
 				</div>
+				{{ csrf_field() }}
 			</form>
 			<!-- /.search form -->
 			<!-- sidebar menu: : style can be found in sidebar.less -->
