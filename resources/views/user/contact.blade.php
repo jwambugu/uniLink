@@ -13,11 +13,11 @@
 						<div class="main-title-2">
 							<h1><span>Contact</span> Us</h1>
 						</div>
-						<form id="contact_form" action="#" method="POST">
+						<form id="contact_form" action="{{ route('user.contact') }}" method="POST">
 							<div class="row">
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="form-group fullname">
-										<input type="text" name="full-name" class="input-text" placeholder="Full Name" required>
+										<input type="text" name="name" class="input-text" placeholder="Full Name" required>
 									</div>
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -32,7 +32,7 @@
 								</div>
 								<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 									<div class="form-group number">
-										<input type="text" name="phone" class="input-text" placeholder="Phone Number" required>
+										<input type="text" name="phoneNumber" class="input-text" placeholder="Phone Number" required>
 									</div>
 								</div>
 								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 clearfix">
@@ -46,6 +46,7 @@
 									</div>
 								</div>
 							</div>
+							{{ csrf_field() }}
 						</form>
 					</div>
 					<!-- Contact form end -->

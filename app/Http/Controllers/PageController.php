@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Alert;
 use App\Admin;
+use App\Contact;
+use App\ContactOwner;
 use App\Hostel;
 use App\Room;
 use Illuminate\Http\Request;
@@ -117,23 +119,66 @@ class PageController extends Controller
 	 */
 	public function advancedSearch(Request $request){
 
-		return $request;
+		//return $request;
 		// TODO fix the advanced search
 		// Find the requested hostel
-		return $hostels = Hostel::where('price', 'like', '%'.$request['price'].'%')
+		$hostels = Hostel::where('price', 'like', '%'.$request['price'].'%')
 			->orWhere('deposit', 'like', '%'.$request['deposit'].'%')
 			->with([
 				'rooms' => function($query){
 					$query->where('roomType', 'like', '%'.\request('roomType').'%');
 				}
 			])
-			->get();
+			->paginate(6);
 
-		return $rooms = Room::where('roomType', 'like', '%'.$request['roomType'].'%')
+		return view('user.basicSearch', [
+			'hostels' => $hostels
+		]);
+		/*return $rooms = Room::where('roomType', 'like', '%'.$request['roomType'].'%')
 			->where('roomCategory', 'like', '%'.$request['roomCategory'].'%')
 			->where('electricityBill', 'like', '%'.$request['electricityBill'].'%')
 			->where('waterBill', 'like', '%'.$request['waterBill'].'%')
-			->get();
+			->get();*/
+	}
+
+	/**
+	 * Send a message to the hostel owner
+	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+	 */
+	public function contactOwner(Request $request){
+
+		// Store the data to the db
+		ContactOwner::create([
+			'ownerID' => $request['ownerID'],
+			'email' => $request['email'],
+			'phoneNumber' => $request['phoneNumber'],
+			'message' => $request['message'],
+		]);
+
+		alert()->success('Message Successfully Sent', 'Action Complete');
+
+		return redirect('/');
+	}
+
+	/**
+	 * Post contact us form
+	 * @param Request $request
+	 * @return \Illuminate\Http\RedirectResponse
+	 */
+	public function postContactUs(Request $request){
+		// Store the data
+		Contact::create([
+			'name' => $request['name'],
+			'email' => $request['email'],
+			'subject' => $request['subject'],
+			'phoneNumber' => $request['phoneNumber'],
+			'message' => $request['message'],
+		]);
+
+		alert()->success('Message Successfully Sent', 'Action Complete');
+
+		return redirect()->back();
 	}
 
 }

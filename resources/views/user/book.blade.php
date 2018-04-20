@@ -252,28 +252,31 @@
 						<!-- Agent widget start -->
 						<div class="sidebar-widget contact-form agent-widget">
 							<div class="main-title-2">
-								<h1><span>Message</span> to Dealer</h1>
+								<h1><span>Message</span> to the Landlord</h1>
 							</div>
-							<form id="agent_form" action="http://template.themevessel.com/the-nest/index.html" method="GET" enctype="multipart/form-data">
+							<form id="agent_form" action="{{ route('user.contactOwner') }}" method="POST">
 								<div class="row">
 									<div class="col-lg-12">
 										<div class="form-group enter-email">
-											<input type="email" name="email" class="input-text" placeholder="Your Email">
+											<input type="email" name="email" class="input-text" placeholder="Your Email" required>
 										</div>
 									</div>
 									<div class="col-lg-12">
 										<div class="form-group number">
-											<input type="text" name="phone" class="input-text"  placeholder="Your Phone">
+											<input type="text" name="phoneNumber" class="input-text"  placeholder="Your Phone" required>
 										</div>
 									</div>
 									<div class="col-lg-12">
 										<div class="form-group message">
-											<textarea class="input-text" name="message" placeholder="Message"></textarea>
+											<textarea class="input-text" name="message" placeholder="Message" required></textarea>
 										</div>
 									</div>
 									<div class="col-lg-12">
 										<button type="submit" class="button-md button-theme btn-block">Send Message</button>
 									</div>
+									<input type="hidden" name="ownerID" value="{{ $hostel->ownerID }}">
+									<input type="hidden" name="hostelID" value="{{ $hostel->id }}">
+									{{ csrf_field() }}
 								</div>
 							</form>
 						</div>
@@ -302,13 +305,13 @@
 							<div class="main-title-2">
 								<h1><span>Latest</span> Tweet</h1>
 							</div>
-							<p><a href="#">@Lorem ipsum dolor</a> sit amet, consectetur adipiscing elit. Aenean id dignissim justo. Maecenas urna lacus, bibendum </p>
-							<p>@Lorem ipsum dolor<a href="#">sit amet, consectetur</a> adipiscing elit. Aenean id dignissim justo. Maecenas urna lacus, bibendum quis orci </p>
+							<p><a href="#">@uniLink</a> this system is simply the best. No more hustle #SimpleAndFast </p>
+							<p><a href="#">@cuFam</a> if you are not using uniLink then you are missing a lot. This system is dope O_o </p>
 						</div>
 						<!-- Latest tweet end -->
 						<!-- Main title -->
 						<div class="main-title-2">
-							<h1><span>Recently</span> Properties</h1>
+							<h1><span>Recent</span> Hostels</h1>
 						</div>
 						<!-- Recently properties start -->
 						@foreach($recentHostels->take(3) as $hostel)
@@ -317,7 +320,7 @@
 									<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12  filtr-item" data-category="1, 2, 3">
 										<div class="property">
 											<!-- Property img -->
-											<a href="properties-details.html" class="property-img">
+											<a href="{{ url('/book') }}/{{ $hostel->id }}" class="property-img">
 												<div class="property-tag button alt featured">Book Now</div>
 												<div class="property-price">KES {{ number_format($hostel->price) }}</div>
 
@@ -330,7 +333,7 @@
 											<div class="property-content">
 												<!-- title -->
 												<h1 class="title">
-													<a href="properties-details.html">{{ $hostel->name }}</a>
+													<a href="{{ url('/book') }}/{{ $hostel->id }}">{{ $hostel->name }}</a>
 												</h1>
 												<!-- Property address -->
 												<!-- Facilities List -->
