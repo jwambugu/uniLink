@@ -31,7 +31,10 @@ Route::get('/faq', [
 	'uses' => 'PageController@getFaq',
 	'as' => 'user.faq'
 ]);
-
+Route::post('/user/logout', [
+	'uses' => 'PageController@getLogout',
+	'as' => 'user.logout'
+]);
 // Show the contact page
 Route::get('/contact', [
 	'uses' => 'PageController@getContact',
