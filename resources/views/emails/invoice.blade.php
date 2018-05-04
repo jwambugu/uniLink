@@ -6,7 +6,7 @@
 	<tr>
 		<td class="title">
 			<strong>
-				Thanks for your order {{ $name }}, here's your invoice.
+				Thanks for your order {{ $name }}, here's your receipt.
 			</strong>
 		</td>
 	</tr>
