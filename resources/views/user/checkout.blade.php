@@ -80,7 +80,8 @@
 												data-description="Widget"
 												data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
 												data-locale="auto"
-												data-currency="{{ env('STRIPE_CURRENCY') }}">
+												data-currency="{{ env('STRIPE_CURRENCY') }}"
+										>
 										</script>
 									</form>
 								</div>
