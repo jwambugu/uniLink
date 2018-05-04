@@ -64,6 +64,13 @@ Open the application on a web browser
 http://127.0.0.1:8000/
 ```
 
+Create an account with stripe and insert the keys in the .env file
+```
+STRIPE_PUBLISHABLE_KEY=
+STRIPE_SECRET_KEY=
+STRIPE_CURRENCY=
+```
+
 ## Using the application
 
 Since the application has two user, there are two different urls for each of them.
