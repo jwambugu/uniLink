@@ -66,6 +66,13 @@ class PageController extends Controller
 	}
 
 	/**
+	 * Logout the user
+	*/
+	public function getLogout(){
+		return 200;
+	}
+
+	/**
 	 * Show the FAQs page
 	 * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
 	 */
