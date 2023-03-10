@@ -14,5 +14,7 @@ RUN chown -R www-data:www-data /var/www
 
 RUN docker-php-ext-install pdo pdo_mysql
 
+USER ${PHP_USER}
+
 CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
 
