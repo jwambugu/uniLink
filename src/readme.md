@@ -8,33 +8,12 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-The project is built on Laravel. For the system to run, the following prerequisites are required. 
+The project is built on Laravel. For the system to run, the following prerequisites are required.
+
+Copy the .env.example to .env
 
 ```
-PHP 7.0 >=
-Composer
-MariaDB or MySQL Database
-```
-
-### Installing
-Here are the steps of running this project.
-
-Clone this repository
-
-```
-git clone https://github.com/ArtisanLabs/uniLink.git
-```
-
-Install the composer dependencies
-
-```
-composer install
-```
-
-Move the .env.example to .env
-
-```
-mv .env.example .env
+cp .env.example .env
 ```
 
 Generate the application encryption key
@@ -42,26 +21,16 @@ Generate the application encryption key
 php artisan key:generate
 ```
 
-Configure the database to match your environment
+Configure the database to match your environment as per `docker-compose.yml`
 ```
-DB_DATABASE=YourDBName
-DB_USERNAME=YourUsername
-DB_PASSWORD=YourPassword
-```
-
-Run the migrations
-```
-php artisan db:seed
-```
-
-Start the server
-```
-php artisan serve
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
 ```
 
 Open the application on a web browser
 ```
-http://127.0.0.1:8000/
+http://127.0.0.1/
 ```
 
 Create an account with stripe and insert the keys in the .env file
@@ -73,14 +42,14 @@ STRIPE_CURRENCY=
 
 ## Using the application
 
-Since the application has two user, there are two different urls for each of them.
+Since the application has two users, there are two different urls for each of them.
 
 ### Admin Dashboard
 
-This is the super user. Has all the rights. To access the dashboard use this link
+This is the superuser. Has all the rights. To access the dashboard use this link
 
 ```
-http://127.0.0.1:8000/admin/login
+http://127.0.0.1/admin/login
 Username - Artisan
 Password - 123456
 ```
@@ -90,7 +59,7 @@ Password - 123456
 Can perform booking of hostels and online payment through stripe. Accessible through
 
 ```
-http://127.0.0.1:8000/
+http://127.0.0.1/
 ```
 
 and then create an account.
@@ -103,7 +72,7 @@ and then create an account.
 
 ## Authors
 
-* **Jay Wambugu** - *Initial work* - [ArtisanLabs](https://github.com/ArtisanLabs/)
+* **Joram Wambugu** - *Initial work* 
 
 ## License
 

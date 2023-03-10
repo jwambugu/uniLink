@@ -32,7 +32,7 @@
 										<!-- Wrapper for slides -->
 											<div class="carousel-inner">
 												<div class="item active">
-													<img src="{{ asset('/storage/hostel_images/default.jpg') }}" class="thumb-preview" alt="Hostel Image">
+													<img src="{{ asset('/nest/img/properties/properties-9.jpg') }}" class="thumb-preview" alt="Hostel Image">
 												</div>
 												@foreach($hostel->images as $image)
 													<div class="item">
