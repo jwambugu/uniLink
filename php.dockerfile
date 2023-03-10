@@ -10,6 +10,8 @@ RUN sed -i "s/group www-data/group ${PHP_GROUP}/g" /usr/local/etc/php-fpm.d/www.
 
 RUN mkdir -p /var/www/html/public
 
+RUN chown -R www-data:www-data /var/www
+
 RUN docker-php-ext-install pdo pdo_mysql
 
 CMD ["php-fpm", "-y", "/usr/local/etc/php-fpm.conf", "-R"]
