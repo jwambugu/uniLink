@@ -269,14 +269,14 @@ class HomeController extends Controller
 			$hostelID = $request->hostelID;
 
 			// Log the payment info
-			Log::useDailyFiles(storage_path().'/logs/payment.log');
-			Log::info([auth()->user()->email => [
-				'ip' => $request->ip(),
-				'stripeID' => $stripeID,
-				'amount' => $amount,
-				'userID' => $userID,
-				'hostelID' => $hostelID
-			]]);
+//			Log::useDailyFiles(storage_path().'/logs/payment.log');
+			Log::info((string)[auth()->user()->email => [
+                'ip' => $request->ip(),
+                'stripeID' => $stripeID,
+                'amount' => $amount,
+                'userID' => $userID,
+                'hostelID' => $hostelID
+            ]]);
 
 			// Add data to the payments table
 			Payment::create([
@@ -297,7 +297,7 @@ class HomeController extends Controller
 			return redirect()->route('home');
 
 		} catch (\Exception $exception){
-			Log::useDailyFiles(storage_path().'/logs/payment-error.log');
+//			Log::useDailyFiles(storage_path().'/logs/payment-error.log');
 			Log::error([auth()->user()->email => [
 				'ip' => $request->ip(),
 				'message' => $exception->getMessage()
