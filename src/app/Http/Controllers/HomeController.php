@@ -262,7 +262,7 @@ class HomeController extends Controller
         $this->bookedIncrement($hostel->id);
 
         alert()
-            ->success('Hostel successfully booked. Check your email for a receipt.', 'Booking Complete')
+            ->success('Hostel successfully booked. Thanks for choosing us.', 'Booking Complete')
             ->persistent('Got It');
 
         return redirect()->route('home');
