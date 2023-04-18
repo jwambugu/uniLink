@@ -9,6 +9,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Ramsey\Uuid\Uuid;
 use Stripe\Charge;
 use Stripe\Customer;
 use Stripe\Stripe;
@@ -248,6 +249,26 @@ class HomeController extends Controller
 	 */
 	public function postCheckout(Request $request){
 
+        $hostel = Hostel::query()->findOrFail($request->id);
+
+        Payment::create([
+            'stripeID' => Uuid::uuid4(),
+            'amount' => $request->amount,
+            'user_id' => auth()->id(),
+            'hostel_id' => $hostel->id
+        ]);
+
+        // Increment the count of booked units
+        $this->bookedIncrement($hostel->id);
+
+        alert()
+            ->success('Hostel successfully booked. Check your email for a receipt.', 'Booking Complete')
+            ->persistent('Got It');
+
+        return redirect()->route('home');
+
+
+        // TODO: update stripe package
 		try{
 			Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
 
