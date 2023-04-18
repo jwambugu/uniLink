@@ -249,7 +249,7 @@ class HomeController extends Controller
 	 */
 	public function postCheckout(Request $request){
 
-        $hostel = Hostel::query()->findOrFail($request->id);
+        $hostel = Hostel::query()->findOrFail($request->hostelID);
 
         Payment::create([
             'stripeID' => Uuid::uuid4(),
